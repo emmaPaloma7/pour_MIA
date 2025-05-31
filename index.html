@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeux Anniversaire ! (Dazai Style)</title>
+    <style>
+        :root {
+            --orange-dazai: #ff7f00;
+            --orange-fonce: #e67300;
+            --noir: #1a1a1a;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: url('https://i.pinimg.com/736x/8e/c6/e4/8ec6e42e5374d8026a861b748129b2a8.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            transition: background-image 0.5s ease-in-out;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .overlay {
+            background: rgba(0, 0, 0, 0.7);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            box-sizing: border-box;
+        }
+        
+        h1 {
+            color: var(--orange-dazai);
+            font-size: clamp(1.8em, 6vw, 3em);
+            text-shadow: 2px 2px 4px var(--noir);
+            margin-top: 30px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        /* Style des boutons */
+        .menu-btn {
+            background: var(--orange-fonce);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-size: clamp(0.9em, 3.5vw, 1.1em);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            z-index: 10;
+            width: 140px;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .menu-btn:hover {
+            background: var(--orange-dazai);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 127, 0, 0.4);
+        }
+        
+        /* Bouton retour */
+        .back-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            font-size: 1.5em;
+            color: var(--orange-dazai);
+            text-decoration: none;
+            background: rgba(0,0,0,0.5);
+            padding: 8px 15px;
+            border-radius: 50%;
+            transition: all 0.3s;
+            z-index: 100;
+            border: 1px solid rgba(255,127,0,0.3);
+        }
+        
+        .back-btn:hover {
+            background: var(--orange-dazai);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        /* Contenu des pages */
+        .page-content {
+            background: rgba(26, 26, 26, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 90%;
+            margin: 20px auto;
+            text-align: left;
+            border-left: 5px solid var(--orange-dazai);
+            animation: fadeIn 0.5s;
+            position: relative;
+            z-index: 10;
+            box-sizing: border-box;
+            word-wrap: break-word;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Effet bandage */
+        .bandage {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            width: 50px;
+            height: 50px;
+            opacity: 0.8;
+            transition: transform 0.3s;
+            z-index: 100;
+        }
+        
+        .bandage:hover {
+            transform: rotate(15deg);
+        }
+        
+        /* Style des listes */
+        ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 25px;
+            font-size: clamp(0.9em, 3.5vw, 1em);
+        }
+        
+        li:before {
+            content: "🩹";
+            position: absolute;
+            left: 0;
+            opacity: 0.7;
+        }
+        
+        /* Citation */
+        .quote {
+            font-style: italic;
+            color: var(--orange-dazai);
+            margin: 20px 0;
+            font-size: clamp(1em, 4vw, 1.2em);
+            text-shadow: 1px 1px 2px var(--noir);
+            line-height: 1.5;
+        }
+        
+        /* Images de fond spécifiques */
+        .bg-accueil {
+            background-image: url('https://i.pinimg.com/736x/8e/c6/e4/8ec6e42e5374d8026a861b748129b2a8.jpg');
+        }
+        
+        .bg-qualites {
+            background-image: url('https://i.pinimg.com/736x/70/fb/d3/70fbd3abba7ae41f8ed37a42a61f75c1.jpg');
+        }
+        
+        .bg-defauts {
+            background-image: url('https://i.pinimg.com/736x/30/53/91/3053910e1732b60e79ce20ef6db3b60d.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-color: #000;
+        }
+        
+        .bg-souvenirs {
+            background-image: url('https://i.pinimg.com/736x/42/c1/d0/42c1d0faacb5efefbcd564aed990cefc.jpg');
+        }
+        
+        .bg-resume {
+            background-image: url('https://i.pinimg.com/474x/9a/d6/53/9ad653c20893df43c2dde56f45aede17.jpg');
+        }
+        
+        /* Étoiles brillantes */
+        .star {
+            position: fixed;
+            background-color: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 5;
+            animation: twinkle 2s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.2; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Discours */
+        .discours {
+            max-width: 90%;
+            margin: 30px auto 20px;
+            padding: 20px;
+            background: rgba(26, 26, 26, 0.7);
+            border-radius: 10px;
+            border-top: 3px solid var(--orange-dazai);
+            font-style: italic;
+            line-height: 1.6;
+            position: relative;
+            z-index: 10;
+            box-sizing: border-box;
+            font-size: clamp(0.9em, 3.5vw, 1em);
+        }
+        
+        .discours:before {
+            content: "\"";
+            font-size: 3em;
+            color: var(--orange-dazai);
+            opacity: 0.3;
+            position: absolute;
+            top: -20px;
+            left: 10px;
+        }
+        
+        .signature {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 15px;
+            color: var(--orange-dazai);
+            font-size: 1.1em;
+        }
+
+        /* Nouveaux styles pour le menu */
+        .menu-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 25px 0;
+        }
+
+        .menu-top-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .menu-bottom-row {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Contrôle audio */
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+            border-radius: 50%;
+            z-index: 100;
+            cursor: pointer;
+            color: var(--orange-dazai);
+            border: 1px solid var(--orange-dazai);
+        }
+        
+        /* Améliorations pour les petits écrans */
+        @media (max-width: 768px) {
+            .overlay {
+                padding: 15px;
+            }
+            
+            .menu-btn {
+                padding: 10px 15px;
+                margin: 5px;
+                width: 120px;
+            }
+            
+            .page-content {
+                padding: 15px;
+            }
+            
+            .discours {
+                padding: 15px;
+                margin: 20px auto;
+            }
+            
+            .bandage {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                margin-top: 50px;
+                font-size: 1.8em;
+            }
+            
+            .menu-btn {
+                width: 100%;
+                max-width: 200px;
+                margin: 5px 0;
+            }
+            
+            .menu-top-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .back-btn {
+                font-size: 1.2em;
+                padding: 6px 12px;
+            }
+            
+            li {
+                padding-left: 22px;
+                margin-bottom: 10px;
+            }
+            
+            .discours:before {
+                font-size: 2.5em;
+            }
+        }
+        
+        /* Correction pour iOS */
+        @supports (-webkit-touch-callout: none) {
+            body {
+                background-attachment: scroll;
+            }
+            
+            .bg-defauts {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+<body class="bg-accueil">
+    <!-- Audio elements for background music -->
+    <audio id="accueilMusic" loop>
+        <source src="art_du_savoir.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+    <audio id="qualitesMusic" loop>
+        <source src="autre1.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+    <audio id="defautsMusic" loop>
+        <source src="autre2.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+    <audio id="souvenirsMusic" loop>
+        <source src="autre3.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+    <audio id="resumeMusic" loop>
+       <source src="aura2.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+
+    <!-- Contrôle audio -->
+    <div class="audio-control" id="audioControl">🔊</div>
+
+    <!-- Page d'accueil -->
+    <div id="accueil" class="overlay">
+        <img src="https://i.imgur.com/JQlY9zP.png" class="bandage" alt="Bandage Dazai">
+        
+        <h1>🎉 Joyeux Anniversaire Vanhée-IKOLO Gédeon ! 🎂</h1>
+        <p class="quote"><em>"Les jours avec toi sont moins ennuyeux qu'un suicide raté."</em> 😄</p>
+        
+        <!-- Menu principal - Nouvelle structure -->
+        <div class="menu-container">
+            <div class="menu-top-row">
+                <a href="#qualites" class="menu-btn">Qualités</a>
+                <a href="#defauts" class="menu-btn">Défauts</a>
+                <a href="#souvenirs" class="menu-btn">Souvenirs</a>
+            </div>
+            <div class="menu-bottom-row">
+                <a href="#resume" class="menu-btn">Notre Histoire</a>
+            </div>
+        </div>
+        
+        <!-- Discours -->
+        <div class="discours">
+            <p>Mon cher Gédeon,</p>
+            <p>En ce jour spécial, je veux malgré tout te souhaiter un joyeux anniversaire.
+</p>
+            <p>Tu es une personne pleine de potentiel, capable d'apporter des sourires, des éclats de rire et une énergie unique. Chaque moment avec toi a été une aventure, souvent intense, parfois belle, parfois douloureuse. Tu peux être une belle personne — et je crois que tu peux encore le devenir pleinement.
+</p>
+            <p>Tu m'as fait du mal, énormément. Et pourtant, je choisis de mettre ça de côté pour te dire que le changement est possible. Pas pour moi, mais pour toi. Pour la paix que tu pourrais offrir aux autres, et surtout à toi-même.
+
+</p>
+            <p>Que cette nouvelle année t'apporte la clarté, le recul et la force de devenir la meilleure version de toi-même. Merci d'avoir été là, à ta façon, dans toute ta complexité.
+</p>
+            <div class="signature">De tout coeur</div>
+        </div>
+    </div>
+    
+    <!-- Page Qualités -->
+    <div id="qualites" class="overlay" style="display:none;">
+        <a href="#accueil" class="back-btn">←</a>
+        <img src="https://i.imgur.com/JQlY9zP.png" class="bandage" alt="Bandage Dazai">
+        
+        <h1>🎯 Tes Qualités</h1>
+        
+        <div class="page-content">
+            <h3>Ce qui te rend génial :</h3>
+            <ul>
+                <li>Ton sens de l'humour un peu provocateur, qui surprend et fait souvent rire malgré tout</li>
+                <li> Ton esprit débrouillard</li>
+                <li>Ton attachement discret mais réel, même quand tu caches bien tes émotions  </li>
+                <li>Une simplicité vraie, tu n'as pas besoin de te faire remarquer — tu restes toi, sans artifice
+</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Page Défauts -->
+    <div id="defauts" class="overlay" style="display:none;">
+        <a href="#accueil" class="back-btn">←</a>
+        <img src="https://i.imgur.com/JQlY9zP.png" class="bandage" alt="Bandage Dazai">
+        
+        <h1>😅 Tes "Défauts"</h1>
+        
+        <div class="page-content">
+            <h3>Tes défauts charmants :</h3>
+            <ul>
+                <li>Tu es un sacré menteur. Tu sais manipuler les mots  parfois pour faire rire, parfois pour blesser, souvent pour éviter la vérité. Tu as détruit des choses, des liens, des gens. Et pourtant, malgré tout ça, je crois que tu peux changer. Que tu peux apprendre à construire au lieu de briser. Ce serait peut-être ton plus beau cadeau d'anniversaire : devenir un homme vrai.
+</li>
+                <li>Tu as ce vide en toi qui te pousse à toujours vouloir plus, même quand tu as déjà beaucoup. La fidélité n'a jamais été ton fort, et tu laisses souvent des cœurs blessés derrière toi. Tu fais mal, parfois sans même t'en rendre compte.</li>
+                <li>Tu es souvent pénible, tu prends peu en compte ce que les autres ressentent, comme si leurs émotions comptaient moins que les tiennes. Tu es centré sur toi, égoïste parfois, et tu t'abrites derrière l'excuse du "c'est trop dur de changer" pour continuer à blesser. Mais au fond, ce n'est pas une excuse, juste une fuite. Ce n'est pas que tu ne peux pas changer — c'est que tu ne veux pas. Et ça, c'est un choix.
+</li>
+                <li>Tu as choisi de rester dans le mensonge plutôt que d'affronter la vérité, parce que c'est plus simple, plus confortable. Devenir vrai demande du courage, et tu refuses ce chemin. Mais ce refus, c'est une fuite, pas une identité, tu gaches celui que t'es vraiment derriere un monstre de mensonge. 
+</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Page Souvenirs -->
+    <div id="souvenirs" class="overlay" style="display:none;">
+        <a href="#accueil" class="back-btn">←</a>
+        <img src="https://i.imgur.com/JQlY9zP.png" class="bandage" alt="Bandage Dazai">
+        
+        <h1>📸 Nos Souvenirs</h1>
+        
+        <div class="page-content">
+            <h3>Nos meilleurs moments :</h3>
+            <ul>
+                <li> Ce jour où tu es venu chez moi pour voir les centres d'examen. Ma sœur traînait, j'étais stressée, et j'avais besoin de toi. Alors je t'ai enfermé. On s'est disputés, fort. Puis j'ai craqué et je t'ai laissé derrière cette porte… mais tu es resté. Et ce simple fait, ce moment bancal, j'ai aime meme si t'as tout gacher apres car malgré tout, tu étais là.
+
+</li>
+                <li>La fois où j'ai touché tes fesses sans le vouloir et que tu étais tellement gêné que t'arrivais même plus à parler — et moi, je n'arrivais plus à m'arrêter de rire
+</li>
+                <li>Toutes ces fois où on rentrait de l'école et que tu trouvais toujours un moyen de m'arnaquer pour une glace — et moi je râlais, mais je finissais toujours par céder
+
+</li>
+                <li></li>
+                <li> Le jour où, en rentrant, un coaster a crié devant tout le monde que t'étais un menteur — ils t'ont crié dessus, et moi j'étais là, mi-gênée, mi-morte de rire aussi
+
+</li>
+                <li>les moments ou je m'ettouffais et que t'etais la</li>
+                <li>En vrai, on a partagé beaucoup de moments — de la joie, des rires, mais aussi des silences lourds et des tristesses profondes. Et même si, avec le temps, ces souvenirs se sont transformés en cauchemars, ils restent une part de notre histoire. Une histoire imparfaite, mais réelle.
+
+</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Page Résumé -->
+    <div id="resume" class="overlay" style="display:none;">
+        <a href="#accueil" class="back-btn">←</a>
+        <img src="https://i.pinimg.com/474x/9a/d6/53/9ad653c20893df43c2dde56f45aede17.jpg" class="bandage" alt="Bandage Dazai">
+        
+        <h1>📜 Notre Histoire</h1>
+        
+        <div class="page-content">
+            <h3>Ce qui nous lie :</h3>
+            <ul>
+                <li>Une relation complexe, faite de rires et de larmes, de vérités et de mensonges</li>
+                <li>Toi : une personne pleine de contradictions - capable de grande générosité comme de profonde égoïsme</li>
+                <li>Des souvenirs marquants, des moments de complicité comme des disputes mémorables</li>
+                <li>Une relation qui m'a blessée mais dont je garde aussi les bons côtés</li>
+                <li>L'espoir que tu puisses un jour devenir la meilleure version de toi-même</li>
+                <li>La reconnaissance pour les moments où tu as été présent, malgré tout</li>
+            </ul>
+            
+            <div class="quote">
+                <p>"Nous ne sommes pas ce que nous avons fait, mais ce que nous choisissons de devenir."</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Images de fond pour chaque section
+        const backgrounds = {
+            'accueil': 'bg-accueil',
+            'qualites': 'bg-qualites',
+            'defauts': 'bg-defauts',
+            'souvenirs': 'bg-souvenirs',
+            'resume': 'bg-resume'
+        };
+
+        // Musiques pour chaque section
+        const musics = {
+            'accueil': document.getElementById('accueilMusic'),
+            'qualites': document.getElementById('qualitesMusic'),
+            'defauts': document.getElementById('defautsMusic'),
+            'souvenirs': document.getElementById('souvenirsMusic'),
+            'resume': document.getElementById('resumeMusic')
+        };
+
+        // Variable pour suivre la musique actuelle
+        let currentMusic = null;
+        let isAudioEnabled = false;
+
+        // Gestion de la navigation
+        window.onhashchange = function() {
+            // Cache toutes les pages
+            document.querySelectorAll('.overlay').forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Affiche la page correspondante
+            const pageId = window.location.hash.substring(1) || 'accueil';
+            document.getElementById(pageId).style.display = 'block';
+            
+            // Change le fond d'écran
+            document.body.className = backgrounds[pageId] || 'bg-accueil';
+            
+            // Gestion de la musique
+            manageMusic(pageId);
+        };
+        
+        // Gestion de la musique
+        function manageMusic(pageId) {
+            // Arrête la musique actuelle si elle joue
+            if (currentMusic) {
+                currentMusic.pause();
+                currentMusic.currentTime = 0;
+            }
+            
+            // Joue la musique de la nouvelle page si elle existe et si l'audio est activé
+            if (musics[pageId] && isAudioEnabled) {
+                currentMusic = musics[pageId];
+                currentMusic.play().catch(e => {
+                    console.log("Erreur de lecture audio: " + e);
+                });
+            }
+        }
+        
+        // Crée des étoiles brillantes
+        function createStars() {
+            const starsCount = 30;
+            const colors = ['#ffffff', '#ffdd59', '#ff9ff3', '#feca57', '#ff6b6b'];
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Position aléatoire
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                
+                // Taille aléatoire
+                const size = Math.random() * 5 + 2;
+                
+                // Couleur aléatoire
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Animation delay aléatoire
+                const delay = Math.random() * 2;
+                
+                star.style.left = `${x}px`;
+                star.style.top = `${y}px`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.backgroundColor = color;
+                star.style.animationDelay = `${delay}s`;
+                
+                document.body.appendChild(star);
+            }
+        }
+        
+        // Initialisation au chargement
+        window.onload = function() {
+            // Déclenche le changement de hash pour afficher la bonne page
+            if (!window.location.hash) {
+                window.location.hash = 'accueil';
+            } else {
+                window.onhashchange();
+            }
+            
+            console.log("Joyeux Anniversaire ! 🎉");
+            
+            // Ajoute un effet de confettis
+            setTimeout(() => {
+                if (window.confetti) {
+                    confetti({
+                        particleCount: 150,
+                        spread: 90,
+                        origin: { y: 0.6 },
+                        colors: ['#ff7f00', '#ffdd59', '#ffffff', '#feca57']
+                    });
+                    
+                    // Crée des étoiles après les confettis
+                    setTimeout(createStars, 1000);
+                }
+            }, 800);
+
+            // Active l'audio après un clic utilisateur (pour contourner les restrictions autoplay)
+            document.addEventListener('click', function() {
+                if (!isAudioEnabled) {
+                    isAudioEnabled = true;
+                    document.getElementById('audioControl').textContent = '🔊';
+                    manageMusic(window.location.hash.substring(1) || 'accueil');
+                }
+            }, { once: true });
+
+            // Contrôle audio
+            document.getElementById('audioControl').addEventListener('click', function() {
+                isAudioEnabled = !isAudioEnabled;
+                this.textContent = isAudioEnabled ? '🔊' : '🔇';
+                
+                if (isAudioEnabled) {
+                    manageMusic(window.location.hash.substring(1) || 'accueil');
+                } else if (currentMusic) {
+                    currentMusic.pause();
+                }
+            });
+        };
+    </script>
+    
+    <!-- Script pour les confettis -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+</body>
+</html>
