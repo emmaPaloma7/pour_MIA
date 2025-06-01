@@ -9,19 +9,32 @@
             --orange-dazai: #ff7f00;
             --orange-fonce: #e67300;
             --noir: #1a1a1a;
+            --rouge-passion: #ff2d52;
+            --rouge-fonce: #cc1a3a;
         }
         
         body {
-            font-family: 'Courier New', monospace;
-            background: url('https://i.pinimg.com/736x/8e/c6/e4/8ec6e42e5374d8026a861b748129b2a8.jpg') no-repeat center center fixed;
-            background-size: cover;
+            font-family: 'Georgia', serif;
+            background-color: var(--noir);
             color: white;
             margin: 0;
             padding: 0;
             text-align: center;
-            transition: background-image 0.5s ease-in-out;
             overflow-x: hidden;
             min-height: 100vh;
+        }
+        
+        /* Nouveau style pour les backgrounds */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            opacity: 0.6;
+            filter: grayscale(30%) brightness(0.7);
         }
         
         .overlay {
@@ -33,17 +46,19 @@
         }
         
         h1 {
-            color: var(--orange-dazai);
+            color: var(--rouge-passion);
             font-size: clamp(1.8em, 6vw, 3em);
             text-shadow: 2px 2px 4px var(--noir);
             margin-top: 30px;
             margin-bottom: 20px;
             line-height: 1.3;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
         
         /* Style des boutons */
         .menu-btn {
-            background: var(--orange-fonce);
+            background: var(--rouge-fonce);
             color: white;
             border: none;
             padding: 12px 20px;
@@ -60,12 +75,13 @@
             width: 140px;
             max-width: 100%;
             box-sizing: border-box;
+            letter-spacing: 0.5px;
         }
         
         .menu-btn:hover {
-            background: var(--orange-dazai);
+            background: var(--rouge-passion);
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 127, 0, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 45, 82, 0.4);
         }
         
         /* Bouton retour */
@@ -74,36 +90,37 @@
             top: 15px;
             left: 15px;
             font-size: 1.5em;
-            color: var(--orange-dazai);
+            color: var(--rouge-passion);
             text-decoration: none;
             background: rgba(0,0,0,0.5);
             padding: 8px 15px;
             border-radius: 50%;
             transition: all 0.3s;
             z-index: 100;
-            border: 1px solid rgba(255,127,0,0.3);
+            border: 1px solid rgba(255,45,82,0.3);
         }
         
         .back-btn:hover {
-            background: var(--orange-dazai);
+            background: var(--rouge-passion);
             color: white;
             transform: scale(1.1);
         }
         
         /* Contenu des pages */
         .page-content {
-            background: rgba(26, 26, 26, 0.9);
-            padding: 20px;
+            background: rgba(31, 31, 31, 0.9);
+            padding: 25px;
             border-radius: 10px;
-            max-width: 90%;
+            max-width: 800px;
             margin: 20px auto;
             text-align: left;
-            border-left: 5px solid var(--orange-dazai);
+            border-left: 5px solid var(--rouge-passion);
             animation: fadeIn 0.5s;
             position: relative;
             z-index: 10;
             box-sizing: border-box;
             word-wrap: break-word;
+            line-height: 1.8;
         }
         
         @keyframes fadeIn {
@@ -121,6 +138,7 @@
             opacity: 0.8;
             transition: transform 0.3s;
             z-index: 100;
+            filter: hue-rotate(300deg);
         }
         
         .bandage:hover {
@@ -151,7 +169,7 @@
         /* Citation */
         .quote {
             font-style: italic;
-            color: var(--orange-dazai);
+            color: var(--rouge-passion);
             margin: 20px 0;
             font-size: clamp(1em, 4vw, 1.2em);
             text-shadow: 1px 1px 2px var(--noir);
@@ -159,29 +177,24 @@
         }
         
         /* Images de fond spécifiques */
-        .bg-accueil {
-            background-image: url('https://i.pinimg.com/736x/8e/c6/e4/8ec6e42e5374d8026a861b748129b2a8.jpg');
+        #accueil-bg {
+            background-image: url('https://i.pinimg.com/736x/9c/a9/1d/9ca91db555cc440ed3faf5612e1abe0d.jpg');
         }
         
-        .bg-qualites {
-            background-image: url('https://i.pinimg.com/736x/70/fb/d3/70fbd3abba7ae41f8ed37a42a61f75c1.jpg');
+        #qualites-bg {
+            background-image: url('https://i.pinimg.com/474x/f4/df/08/f4df08826c31cf2ab42bc26581fb0fdd.jpg');
         }
         
-        .bg-defauts {
-            background-image: url('https://i.pinimg.com/736x/30/53/91/3053910e1732b60e79ce20ef6db3b60d.jpg');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            background-color: #000;
+        #defauts-bg {
+            background-image: url('https://i.pinimg.com/474x/dc/27/62/dc2762de454a28ea5fc327394691a3f9.jpg');
         }
         
-        .bg-souvenirs {
-            background-image: url('https://i.pinimg.com/736x/42/c1/d0/42c1d0faacb5efefbcd564aed990cefc.jpg');
+        #souvenirs-bg {
+            background-image: url('https://i.pinimg.com/736x/72/d3/d9/72d3d9f0e7a97aaacf79fc0b00c6b3f7.jpg');
         }
         
-        .bg-resume {
-            background-image: url('https://i.pinimg.com/474x/9a/d6/53/9ad653c20893df43c2dde56f45aede17.jpg');
+        #resume-bg {
+            background-image: url('https://i.pinimg.com/736x/08/2d/a7/082da7363bc7d2c9c13c0db8445674b6.jpg');
         }
         
         /* Étoiles brillantes */
@@ -203,34 +216,38 @@
         .discours {
             max-width: 90%;
             margin: 30px auto 20px;
-            padding: 20px;
-            background: rgba(26, 26, 26, 0.7);
+            padding: 30px;
+            background: rgba(31, 31, 31, 0.8);
             border-radius: 10px;
-            border-top: 3px solid var(--orange-dazai);
+            border-top: 3px solid var(--rouge-passion);
             font-style: italic;
-            line-height: 1.6;
+            line-height: 1.8;
             position: relative;
             z-index: 10;
             box-sizing: border-box;
-            font-size: clamp(0.9em, 3.5vw, 1em);
+            font-size: clamp(1em, 3.5vw, 1.1em);
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         
         .discours:before {
             content: "\"";
-            font-size: 3em;
-            color: var(--orange-dazai);
-            opacity: 0.3;
+            font-size: 4em;
+            color: var(--rouge-passion);
+            opacity: 0.2;
             position: absolute;
-            top: -20px;
+            top: -30px;
             left: 10px;
+            font-family: serif;
         }
         
         .signature {
             text-align: right;
             font-weight: bold;
-            margin-top: 15px;
-            color: var(--orange-dazai);
-            font-size: 1.1em;
+            margin-top: 25px;
+            color: var(--rouge-passion);
+            font-size: 1.2em;
+            font-style: normal;
         }
 
         /* Nouveaux styles pour le menu */
@@ -265,8 +282,22 @@
             border-radius: 50%;
             z-index: 100;
             cursor: pointer;
-            color: var(--orange-dazai);
-            border: 1px solid var(--orange-dazai);
+            color: var(--rouge-passion);
+            border: 1px solid var(--rouge-passion);
+        }
+        
+        /* Pétales animés */
+        .petal {
+            position: absolute;
+            color: #ff6b6b;
+            opacity: 0.7;
+            font-size: 18px;
+            animation: fall linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
         }
         
         /* Améliorations pour les petits écrans */
@@ -286,8 +317,13 @@
             }
             
             .discours {
-                padding: 15px;
+                padding: 20px;
                 margin: 20px auto;
+            }
+            
+            .discours:before {
+                font-size: 3em;
+                top: -20px;
             }
             
             .bandage {
@@ -322,175 +358,203 @@
                 padding-left: 22px;
                 margin-bottom: 10px;
             }
-            
-            .discours:before {
-                font-size: 2.5em;
-            }
-        }
-        
-        /* Correction pour iOS */
-        @supports (-webkit-touch-callout: none) {
-            body {
-                background-attachment: scroll;
-            }
-            
-            .bg-defauts {
-                background-attachment: scroll;
-            }
         }
     </style>
 </head>
-<body class="bg-accueil">
+<body>
+    <!-- Images de fond pour chaque section -->
+    <img id="accueil-bg" class="bg-image" style="display:block;">
+    <img id="qualites-bg" class="bg-image" style="display:none;">
+    <img id="defauts-bg" class="bg-image" style="display:none;">
+    <img id="souvenirs-bg" class="bg-image" style="display:none;">
+    <img id="resume-bg" class="bg-image" style="display:none;">
+
     <!-- Audio elements for background music -->
     <audio id="accueilMusic" loop>
-        <source src="art_du_savoir.mp3" type="audio/mpeg">
+        <source src="ALL-OF-ME.mp3" type="audio/mpeg">
         Votre navigateur ne supporte pas l'élément audio.
     </audio>
     <audio id="qualitesMusic" loop>
-        <source src="autre1.mp3" type="audio/mpeg">
+        <source src="qualite.mp3" type="audio/mpeg">
         Votre navigateur ne supporte pas l'élément audio.
     </audio>
     <audio id="defautsMusic" loop>
-        <source src="autre2.mp3" type="audio/mpeg">
+        <source src="videoplayback.mp3" type="audio/mpeg">
         Votre navigateur ne supporte pas l'élément audio.
     </audio>
     <audio id="souvenirsMusic" loop>
-        <source src="autre3.mp3" type="audio/mpeg">
+        <source src="Alan-Walker-Lost-Control-_-DJ-Flam-Urban-Bac-XkXpaL-iMNY.mp3" type="audio/mpeg">
         Votre navigateur ne supporte pas l'élément audio.
     </audio>
     <audio id="resumeMusic" loop>
-       <source src="aura2.mp3" type="audio/mpeg">
+       <source src="5555.mp3" type="audio/mpeg">
         Votre navigateur ne supporte pas l'élément audio.
     </audio>
 
     <!-- Contrôle audio -->
-    <div class="audio-control" id="audioControl">🔊</div>
+    <div class="audio-control" id="audioControl">⏸️</div>
 
     <!-- Page d'accueil -->
     <div id="accueil" class="overlay">
-        <img src="https://i.imgur.com/JQlY9zP.png" class="bandage" alt="Bandage Dazai">
+        <img src="https://i.pinimg.com/474x/f4/df/08/f4df08826c31cf2ab42bc26581fb0fdd.jpg" class="bandage" alt="Bandage Dazai">
         
-        <h1>🎉 Joyeux Anniversaire Vanhée-IKOLO Gédeon ! 🎂</h1>
-        <p class="quote"><em>"Les jours avec toi sont moins ennuyeux qu'un suicide raté."</em> 😄</p>
+        <h1>💌 Déclaration pour ma Mia</h1>
         
         <!-- Menu principal - Nouvelle structure -->
         <div class="menu-container">
             <div class="menu-top-row">
-                <a href="#qualites" class="menu-btn">Qualités</a>
-                <a href="#defauts" class="menu-btn">Défauts</a>
-                <a href="#souvenirs" class="menu-btn">Souvenirs</a>
+                <a href="#qualites" class="menu-btn">Tes Lumières</a>
+                <a href="#defauts" class="menu-btn">Tes Nuances</a>
+                <a href="#souvenirs" class="menu-btn">Nos Étoiles</a>
             </div>
             <div class="menu-bottom-row">
-                <a href="#resume" class="menu-btn">Notre Histoire</a>
+                <a href="#resume" class="menu-btn">Notre Galaxie</a>
             </div>
         </div>
         
         <!-- Discours -->
-        <div class="discours">
-            <p>Mon cher Gédeon,</p>
-            <p>En ce jour spécial, je veux malgré tout te souhaiter un joyeux anniversaire.
-</p>
-            <p>Tu es une personne pleine de potentiel, capable d'apporter des sourires, des éclats de rire et une énergie unique. Chaque moment avec toi a été une aventure, souvent intense, parfois belle, parfois douloureuse. Tu peux être une belle personne — et je crois que tu peux encore le devenir pleinement.
-</p>
-            <p>Tu m'as fait du mal, énormément. Et pourtant, je choisis de mettre ça de côté pour te dire que le changement est possible. Pas pour moi, mais pour toi. Pour la paix que tu pourrais offrir aux autres, et surtout à toi-même.
-
-</p>
-            <p>Que cette nouvelle année t'apporte la clarté, le recul et la force de devenir la meilleure version de toi-même. Merci d'avoir été là, à ta façon, dans toute ta complexité.
-</p>
-            <div class="signature">De tout coeur</div>
+        <div class="discours" style="background: rgba(26, 26, 26, 0.8); border: 1px solid var(--rouge-passion); box-shadow: 0 0 20px rgba(255, 45, 82, 0.3);">
+            <p style="font-size: 1.1em; line-height: 1.8; text-align: center;">Ma chère Mia, <span style="color: #ff6b6b; font-size: 1.3em;">💖</span></p>
+            
+            <p style="position: relative; padding-left: 20px;">
+                <span style="position: absolute; left: 0; color: var(--rouge-passion); font-size: 2em; line-height: 0.8;">"</span>
+                Il y a des sentiments que les mots peinent à exprimer... <br>
+                Pourtant aujourd'hui, je voudrais que ces lettres deviennent <br>
+                l'écrin de tout l'amour qui pulse dans mon cœur. <br>
+                <span style="display: inline-block; margin: 10px 0; color: var(--rouge-passion);">✧･ﾟ: *✧･ﾟ:* *:･ﾟ✧*:･ﾟ✧</span><br>
+                Tu es l'éclair qui a déchiré mes nuits, <br>
+                La mélodie qui a donné un rythme à mon existence. <br>
+                Avant toi, je marchais dans le brouillard. <br>
+                Depuis toi, chaque pas a la saveur de l'éternité.
+            </p>
+            
+            <div style="display: flex; align-items: center; margin: 20px 0;">
+                <div style="flex: 1; border-top: 1px dashed var(--rouge-passion);"></div>
+                <span style="padding: 0 10px; color: var(--rouge-passion);">✿</span>
+                <div style="flex: 1; border-top: 1px dashed var(--rouge-passion);"></div>
+            </div>
+            
+            <ul style="list-style-type: none; padding-left: 0; text-align: center;">
+                <li style="margin-bottom: 15px;">🌠 <strong>Ton regard</strong> - Un univers où je me perds avec délice</li>
+                <li style="margin-bottom: 15px;">🌹 <strong>Ta présence</strong> - Un cadeau que je n'ose croire mériter</li>
+                <li style="margin-bottom: 15px;">🎭 <strong>Ton âme</strong> - Ce chef-d'œuvre sensible qui m'ensorcelle</li>
+            </ul>
+            
+            <p style="font-style: italic; text-align: center; position: relative;">
+                <span style="color: var(--rouge-passion);">« Je ne promets pas des montagnes dorées, <br>
+                Mais ma main toujours tendue, mon cœur toujours ouvert, <br>
+                Un amour qui se renouvelle à chaque aube. »</span>
+            </p>
+            
+            <div class="signature" style="margin-top: 30px; text-align: center; font-family: 'Brush Script MT', cursive;">
+                <p style="margin: 0; font-size: 1.3em; color: #ff6b6b;">Pour l'éternité et au-delà,</p>
+                <p style="margin: 0; font-size: 1.5em; color: var(--rouge-passion);">Ton amoureux transi <span style="font-size: 1.2em;">🌙</span></p>
+                <div style="margin-top: 10px; font-size: 0.8em; color: #aaa;">(Celui qui garde ton sourire gravé dans son âme)</div>
+            </div>
+            
+            <!-- Effet pétales tombants -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: -1;">
+                <div class="petal" style="position: absolute; color: #ff6b6b; opacity: 0.7; font-size: 20px;">❁</div>
+                <div class="petal" style="position: absolute; color: #ff9ff3; opacity: 0.7; font-size: 18px;">✽</div>
+            </div>
         </div>
     </div>
     
     <!-- Page Qualités -->
     <div id="qualites" class="overlay" style="display:none;">
         <a href="#accueil" class="back-btn">←</a>
-        <img src="https://i.imgur.com/JQlY9zP.png" class="bandage" alt="Bandage Dazai">
+        <img src="" class="bandage" alt="Bandage Dazai">
         
-        <h1>🎯 Tes Qualités</h1>
+        <h1>✨ Tes Lumineuses Qualités</h1>
         
         <div class="page-content">
-            <h3>Ce qui te rend génial :</h3>
-            <ul>
-                <li>Ton sens de l'humour un peu provocateur, qui surprend et fait souvent rire malgré tout</li>
-                <li> Ton esprit débrouillard</li>
-                <li>Ton attachement discret mais réel, même quand tu caches bien tes émotions  </li>
-                <li>Une simplicité vraie, tu n'as pas besoin de te faire remarquer — tu restes toi, sans artifice
-</li>
-            </ul>
+            <div class="discours" style="background: rgba(26, 26, 26, 0.7); border-top: 3px solid var(--rouge-passion);">
+                <p>Mia, tu es un miracle à mes yeux... 🌟</p>
+                
+                <p>Tu es belle - pas seulement dans cette grâce naturelle qui fait tourner les têtes, mais dans cette lumière intérieure qui traverse chacun de tes gestes. Ta voix est une caresse, tes silences sont éloquents, et ton sourire... ton sourire est mon antidote à toutes les peines du monde. 🥀➡️🌻</p>
+                
+                <p>Ce que j'adore chez toi :</p>
+                
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li style="padding-left: 0; margin-bottom: 15px;">💎 <strong>Ta résilience</strong> - Même brisée, tu trouves la force de reconstruire, et ça m'épate</li>
+                    <li style="padding-left: 0; margin-bottom: 15px;">🌹 <strong>Ta douceur</strong> - Cette façon unique de comprendre sans juger, d'écouter vraiment</li>
+                    <li style="padding-left: 0; margin-bottom: 15px;">🎨 <strong>Ta créativité</strong> - Tu transformes le quotidien en œuvre d'art sans même t'en rendre compte</li>
+                    <li style="padding-left: 0; margin-bottom: 15px;">⚡ <strong>Ton intuition</strong> - Comme si tu lisais dans mon âme avant même que je ne parle</li>
+                </ul>
+                
+                <p>Quand ton rire fuse, c'est toute ma mélancolie qui s'envole. 😄✈️ Quand tu poses ta main sur la mienne, c'est tout mon être qui retrouve son équilibre. 🤲💫</p>
+                
+                <p>Tu es ce paradoxe rare : à la fois mon havre de paix et ma plus belle tempête. Chaque jour à tes côtés est une page blanche qu'on remplit de couleurs vives. 🎨📖</p>
+                
+                <div class="signature" style="margin-top: 25px;">Celui qui trouve le bonheur dans ton simple regard<br>🌙✨</div>
+            </div>
         </div>
     </div>
     
     <!-- Page Défauts -->
     <div id="defauts" class="overlay" style="display:none;">
         <a href="#accueil" class="back-btn">←</a>
-        <img src="https://i.imgur.com/JQlY9zP.png" class="bandage" alt="Bandage Dazai">
+        <img src="https://i.pinimg.com/736x/9c/a9/1d/9ca91db555cc440ed3faf5612e1abe0d.jpg" class="bandage" alt="Bandage Dazai">
         
         <h1>😅 Tes "Défauts"</h1>
         
         <div class="page-content">
-            <h3>Tes défauts charmants :</h3>
-            <ul>
-                <li>Tu es un sacré menteur. Tu sais manipuler les mots  parfois pour faire rire, parfois pour blesser, souvent pour éviter la vérité. Tu as détruit des choses, des liens, des gens. Et pourtant, malgré tout ça, je crois que tu peux changer. Que tu peux apprendre à construire au lieu de briser. Ce serait peut-être ton plus beau cadeau d'anniversaire : devenir un homme vrai.
-</li>
-                <li>Tu as ce vide en toi qui te pousse à toujours vouloir plus, même quand tu as déjà beaucoup. La fidélité n'a jamais été ton fort, et tu laisses souvent des cœurs blessés derrière toi. Tu fais mal, parfois sans même t'en rendre compte.</li>
-                <li>Tu es souvent pénible, tu prends peu en compte ce que les autres ressentent, comme si leurs émotions comptaient moins que les tiennes. Tu es centré sur toi, égoïste parfois, et tu t'abrites derrière l'excuse du "c'est trop dur de changer" pour continuer à blesser. Mais au fond, ce n'est pas une excuse, juste une fuite. Ce n'est pas que tu ne peux pas changer — c'est que tu ne veux pas. Et ça, c'est un choix.
-</li>
-                <li>Tu as choisi de rester dans le mensonge plutôt que d'affronter la vérité, parce que c'est plus simple, plus confortable. Devenir vrai demande du courage, et tu refuses ce chemin. Mais ce refus, c'est une fuite, pas une identité, tu gaches celui que t'es vraiment derriere un monstre de mensonge. 
-</li>
-            </ul>
+            <h3>Ce qui te rend unique :</h3>
+            <div class="quote">
+                <p>Tu as parfois ce petit côté têtue et un brin impatiente 😅, mais même ça, je le trouve adorable… parce que ça fait partie de toi, Mia. 💞</p>
+            </div>
         </div>
     </div>
     
     <!-- Page Souvenirs -->
     <div id="souvenirs" class="overlay" style="display:none;">
         <a href="#accueil" class="back-btn">←</a>
-        <img src="https://i.imgur.com/JQlY9zP.png" class="bandage" alt="Bandage Dazai">
+        <img src="https://i.pinimg.com/474x/f4/df/08/f4df08826c31cf2ab42bc26581fb0fdd.jpg" class="bandage" alt="Bandage Dazai">
         
         <h1>📸 Nos Souvenirs</h1>
         
         <div class="page-content">
-            <h3>Nos meilleurs moments :</h3>
-            <ul>
-                <li> Ce jour où tu es venu chez moi pour voir les centres d'examen. Ma sœur traînait, j'étais stressée, et j'avais besoin de toi. Alors je t'ai enfermé. On s'est disputés, fort. Puis j'ai craqué et je t'ai laissé derrière cette porte… mais tu es resté. Et ce simple fait, ce moment bancal, j'ai aime meme si t'as tout gacher apres car malgré tout, tu étais là.
-
-</li>
-                <li>La fois où j'ai touché tes fesses sans le vouloir et que tu étais tellement gêné que t'arrivais même plus à parler — et moi, je n'arrivais plus à m'arrêter de rire
-</li>
-                <li>Toutes ces fois où on rentrait de l'école et que tu trouvais toujours un moyen de m'arnaquer pour une glace — et moi je râlais, mais je finissais toujours par céder
-
-</li>
-                <li></li>
-                <li> Le jour où, en rentrant, un coaster a crié devant tout le monde que t'étais un menteur — ils t'ont crié dessus, et moi j'étais là, mi-gênée, mi-morte de rire aussi
-
-</li>
-                <li>les moments ou je m'ettouffais et que t'etais la</li>
-                <li>En vrai, on a partagé beaucoup de moments — de la joie, des rires, mais aussi des silences lourds et des tristesses profondes. Et même si, avec le temps, ces souvenirs se sont transformés en cauchemars, ils restent une part de notre histoire. Une histoire imparfaite, mais réelle.
-
-</li>
-            </ul>
+            <div class="discours">
+                <p>Ma douce Mia, 🌸</p>
+                
+                <p>Par où commencer ? Il y a tant de souvenirs dans ma tête, tant de moments avec toi qui me reviennent en boucle comme une chanson qu'on n'oublie jamais... 🎶💭</p>
+                
+                <p>Je me souviens de notre premier regard. Ce moment-là, suspendu dans le temps, où le monde autour de moi s'est figé... il n'y avait plus que toi. ✨👀 Tu étais là, rayonnante, sans même t'en rendre compte. Et moi, j'étais là, déjà en train de tomber... pas juste amoureux, mais profondément, irrémédiablement attaché à toi 💘.</p>
+                
+                <p>Je me souviens de nos premiers fous rires, de ces discussions sans fin qui duraient jusqu'à ce que le sommeil nous prenne de force 😴😂. De ces regards complices, de ces silences pleins de sens... de chaque détail que je garde précieusement dans ma mémoire comme des trésors. 🪄💬</p>
+                
+                <p>Je me souviens de la façon dont tu me regardais, comme si j'étais quelqu'un de spécial. Et crois-moi, Mia, c'est ce regard-là qui m'a donné la force d'être meilleur. 💪❤ Tu m'as vu même quand moi je ne me voyais plus. Tu as cru en moi dans mes silences, dans mes doutes, dans mes chutes. Tu as été mon soutien invisible, mon refuge 🫂🌧🌈.</p>
+                
+                <p>Je me souviens de nos promenades, de nos photos idiotes 📸😂, de ta main dans la mienne quand il faisait froid ❄🖐, de ton rire qui réchauffait mes hivers... et de tous ces instants simples mais précieux. Ils sont gravés en moi, Mia. À jamais.</p>
+                
+                <p>Je me souviens aussi de nos moments plus durs, de ces instants où on a douté, pleuré, trébuché... Mais même dans ces tempêtes, tu étais là 🌪💔. Et c'est dans ces moments-là que j'ai compris : ce qu'on a, toi et moi, est plus fort que tout. 🔐💞</p>
+                
+                <p>Aujourd'hui, je repense à tout ça, les larmes aux yeux et le cœur rempli. Pas de tristesse, non... juste de l'amour. Immense. Éternel. 💓🕊</p>
+                
+                <p>Parce que tu as marqué ma vie à jamais. Parce que peu importe le temps qui passe, je n'oublierai jamais ce que j'ai vécu avec toi. Tu resteras cette lumière dans mes souvenirs, ce battement particulier dans mon cœur, ce prénom qui aura toujours un goût d'amour pur : Mia. 🌹💫</p>
+                
+                <p>Merci pour chaque sourire, chaque caresse, chaque souvenir. Merci d'avoir été toi. Merci d'avoir été nous. 💌</p>
+                
+                <p>Je t'aimerai toujours, à travers les souvenirs, à travers les échos du passé, à travers les battements de mon cœur. 🕰❤‍🔥</p>
+                
+                <div class="signature">Pour toujours dans ma mémoire et mon amour,<br>Ton éternel rêveur 🌙💖</div>
+            </div>
         </div>
     </div>
 
     <!-- Page Résumé -->
     <div id="resume" class="overlay" style="display:none;">
         <a href="#accueil" class="back-btn">←</a>
-        <img src="https://i.pinimg.com/474x/9a/d6/53/9ad653c20893df43c2dde56f45aede17.jpg" class="bandage" alt="Bandage Dazai">
+        <img src="https://i.pinimg.com/474x/dc/27/62/dc2762de454a28ea5fc327394691a3f9.jpg" class="bandage" alt="Bandage Dazai">
         
-        <h1>📜 Notre Histoire</h1>
+        <h1>📜 Notre Galaxie</h1>
         
         <div class="page-content">
-            <h3>Ce qui nous lie :</h3>
-            <ul>
-                <li>Une relation complexe, faite de rires et de larmes, de vérités et de mensonges</li>
-                <li>Toi : une personne pleine de contradictions - capable de grande générosité comme de profonde égoïsme</li>
-                <li>Des souvenirs marquants, des moments de complicité comme des disputes mémorables</li>
-                <li>Une relation qui m'a blessée mais dont je garde aussi les bons côtés</li>
-                <li>L'espoir que tu puisses un jour devenir la meilleure version de toi-même</li>
-                <li>La reconnaissance pour les moments où tu as été présent, malgré tout</li>
-            </ul>
-            
             <div class="quote">
-                <p>"Nous ne sommes pas ce que nous avons fait, mais ce que nous choisissons de devenir."</p>
+                <p>Tout a commencé par un regard, puis des mots, des rires, et petit à petit… un lien s'est tissé. ✨</p>
+                <p>On a partagé des moments uniques, des hauts, des bas, mais surtout beaucoup d'amour. 💑</p>
+                <p>Chaque jour passé avec toi est devenu un souvenir précieux que je garde dans mon cœur. 🕊</p>
+                <p>Notre histoire, c'est plus qu'un chapitre : c'est une vraie aventure, gravée à jamais. 📖❤</p>
             </div>
         </div>
     </div>
@@ -498,11 +562,11 @@
     <script>
         // Images de fond pour chaque section
         const backgrounds = {
-            'accueil': 'bg-accueil',
-            'qualites': 'bg-qualites',
-            'defauts': 'bg-defauts',
-            'souvenirs': 'bg-souvenirs',
-            'resume': 'bg-resume'
+            'accueil': 'accueil-bg', 
+            'qualites': 'qualites-bg',
+            'defauts': 'defauts-bg',
+            'souvenirs': 'souvenirs-bg',
+            'resume': 'resume-bg'
         };
 
         // Musiques pour chaque section
@@ -516,21 +580,27 @@
 
         // Variable pour suivre la musique actuelle
         let currentMusic = null;
-        let isAudioEnabled = false;
+        let isMusicPlaying = false;
 
         // Gestion de la navigation
         window.onhashchange = function() {
-            // Cache toutes les pages
+            // Cache toutes les pages et tous les backgrounds
             document.querySelectorAll('.overlay').forEach(page => {
                 page.style.display = 'none';
+            });
+            document.querySelectorAll('.bg-image').forEach(bg => {
+                bg.style.display = 'none';
             });
             
             // Affiche la page correspondante
             const pageId = window.location.hash.substring(1) || 'accueil';
             document.getElementById(pageId).style.display = 'block';
             
-            // Change le fond d'écran
-            document.body.className = backgrounds[pageId] || 'bg-accueil';
+            // Affiche le background correspondant
+            const bgId = backgrounds[pageId];
+            if (bgId) {
+                document.getElementById(bgId).style.display = 'block';
+            }
             
             // Gestion de la musique
             manageMusic(pageId);
@@ -544,12 +614,21 @@
                 currentMusic.currentTime = 0;
             }
             
-            // Joue la musique de la nouvelle page si elle existe et si l'audio est activé
-            if (musics[pageId] && isAudioEnabled) {
+            // Joue la musique de la nouvelle page si elle existe
+            if (musics[pageId]) {
                 currentMusic = musics[pageId];
-                currentMusic.play().catch(e => {
-                    console.log("Erreur de lecture audio: " + e);
-                });
+                const promise = currentMusic.play();
+                
+                if (promise !== undefined) {
+                    promise.then(_ => {
+                        isMusicPlaying = true;
+                        document.getElementById('audioControl').textContent = '⏸️';
+                    }).catch(error => {
+                        // Si l'autoplay échoue, on attend un clic utilisateur
+                        document.getElementById('audioControl').textContent = '▶️';
+                        isMusicPlaying = false;
+                    });
+                }
             }
         }
         
@@ -586,6 +665,31 @@
             }
         }
         
+        // Création de pétales animés
+        function createPetals() {
+            const petals = ['❁', '✽', '✿', '🌸', '🌹'];
+            const container = document.createElement('div');
+            container.style.position = 'fixed';
+            container.style.top = '0';
+            container.style.left = '0';
+            container.style.width = '100%';
+            container.style.height = '100%';
+            container.style.pointerEvents = 'none';
+            container.style.zIndex = '-1';
+            document.body.appendChild(container);
+
+            for (let i = 0; i < 15; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.top = -20 + 'px';
+                petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                petal.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(petal);
+            }
+        }
+
         // Initialisation au chargement
         window.onload = function() {
             // Déclenche le changement de hash pour afficher la bonne page
@@ -612,24 +716,56 @@
                 }
             }, 800);
 
-            // Active l'audio après un clic utilisateur (pour contourner les restrictions autoplay)
-            document.addEventListener('click', function() {
-                if (!isAudioEnabled) {
-                    isAudioEnabled = true;
-                    document.getElementById('audioControl').textContent = '🔊';
-                    manageMusic(window.location.hash.substring(1) || 'accueil');
-                }
-            }, { once: true });
+            // Crée les pétales animés
+            createPetals();
+
+            // Tente de démarrer la musique automatiquement
+            const pageId = window.location.hash.substring(1) || 'accueil';
+            currentMusic = musics[pageId];
+            
+            // Réinitialise et tente de jouer
+            currentMusic.currentTime = 0;
+            const promise = currentMusic.play();
+            
+            if (promise !== undefined) {
+                promise.then(_ => {
+                    // Lecture réussie
+                    isMusicPlaying = true;
+                    document.getElementById('audioControl').textContent = '⏸️';
+                }).catch(error => {
+                    // Lecture échouée - on attend un clic utilisateur
+                    document.getElementById('audioControl').textContent = '▶️';
+                    isMusicPlaying = false;
+                    
+                    // On active le son au premier clic n'importe où sur la page
+                    document.body.addEventListener('click', function firstClick() {
+                        currentMusic.play().then(_ => {
+                            isMusicPlaying = true;
+                            document.getElementById('audioControl').textContent = '⏸️';
+                        });
+                        document.body.removeEventListener('click', firstClick);
+                    }, { once: true });
+                });
+            }
 
             // Contrôle audio
             document.getElementById('audioControl').addEventListener('click', function() {
-                isAudioEnabled = !isAudioEnabled;
-                this.textContent = isAudioEnabled ? '🔊' : '🔇';
-                
-                if (isAudioEnabled) {
-                    manageMusic(window.location.hash.substring(1) || 'accueil');
-                } else if (currentMusic) {
-                    currentMusic.pause();
+                if (isMusicPlaying) {
+                    // Mettre en pause
+                    if (currentMusic) {
+                        currentMusic.pause();
+                    }
+                    this.textContent = '▶️';
+                    isMusicPlaying = false;
+                } else {
+                    // Reprendre
+                    if (currentMusic) {
+                        currentMusic.play().catch(e => {
+                            console.log("Erreur de reprise audio: " + e);
+                        });
+                    }
+                    this.textContent = '⏸️';
+                    isMusicPlaying = true;
                 }
             });
         };
