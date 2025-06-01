@@ -284,6 +284,13 @@
             cursor: pointer;
             color: var(--rouge-passion);
             border: 1px solid var(--rouge-passion);
+            transition: all 0.3s;
+        }
+        
+        .audio-control:hover {
+            background: var(--rouge-passion);
+            color: white;
+            transform: scale(1.1);
         }
         
         /* Pétales animés */
@@ -371,7 +378,7 @@
 
     <!-- Audio elements for background music -->
     <audio id="accueilMusic" loop>
-        <source src="ALL-OF-ME.mp3" type="audio/mpeg">
+        <source src="videoplayback (1).mp3" type="audio/mpeg">
         Votre navigateur ne supporte pas l'élément audio.
     </audio>
     <audio id="qualitesMusic" loop>
@@ -379,15 +386,15 @@
         Votre navigateur ne supporte pas l'élément audio.
     </audio>
     <audio id="defautsMusic" loop>
-        <source src="videoplayback.mp3" type="audio/mpeg">
-        Votre navigateur ne supporte pas l'élément audio.
-    </audio>
-    <audio id="souvenirsMusic" loop>
         <source src="Alan-Walker-Lost-Control-_-DJ-Flam-Urban-Bac-XkXpaL-iMNY.mp3" type="audio/mpeg">
         Votre navigateur ne supporte pas l'élément audio.
     </audio>
+    <audio id="souvenirsMusic" loop>
+        <source src="videoplayback.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
     <audio id="resumeMusic" loop>
-       <source src="5555.mp3" type="audio/mpeg">
+        <source src="5555.mp3" type="audio/mpeg">
         Votre navigateur ne supporte pas l'élément audio.
     </audio>
 
@@ -558,218 +565,180 @@
             </div>
         </div>
     </div>
+<script>
+    // Images de fond pour chaque section
+    const backgrounds = {
+        'accueil': 'accueil-bg', 
+        'qualites': 'qualites-bg',
+        'defauts': 'defauts-bg',
+        'souvenirs': 'souvenirs-bg',
+        'resume': 'resume-bg'
+    };
 
-    <script>
-        // Images de fond pour chaque section
-        const backgrounds = {
-            'accueil': 'accueil-bg', 
-            'qualites': 'qualites-bg',
-            'defauts': 'defauts-bg',
-            'souvenirs': 'souvenirs-bg',
-            'resume': 'resume-bg'
-        };
+    // Musiques pour chaque section
+    const musics = {
+        'accueil': document.getElementById('accueilMusic'),
+        'qualites': document.getElementById('qualitesMusic'),
+        'defauts': document.getElementById('defautsMusic'),
+        'souvenirs': document.getElementById('souvenirsMusic'),
+        'resume': document.getElementById('resumeMusic')
+    };
 
-        // Musiques pour chaque section
-        const musics = {
-            'accueil': document.getElementById('accueilMusic'),
-            'qualites': document.getElementById('qualitesMusic'),
-            'defauts': document.getElementById('defautsMusic'),
-            'souvenirs': document.getElementById('souvenirsMusic'),
-            'resume': document.getElementById('resumeMusic')
-        };
+    // Variable pour suivre la musique actuelle
+    let currentMusic = null;
+    let isMusicPlaying = false;
 
-        // Variable pour suivre la musique actuelle
-        let currentMusic = null;
-        let isMusicPlaying = false;
-
-        // Gestion de la navigation
-        window.onhashchange = function() {
-            // Cache toutes les pages et tous les backgrounds
-            document.querySelectorAll('.overlay').forEach(page => {
-                page.style.display = 'none';
-            });
-            document.querySelectorAll('.bg-image').forEach(bg => {
-                bg.style.display = 'none';
-            });
-            
-            // Affiche la page correspondante
-            const pageId = window.location.hash.substring(1) || 'accueil';
-            document.getElementById(pageId).style.display = 'block';
-            
-            // Affiche le background correspondant
-            const bgId = backgrounds[pageId];
-            if (bgId) {
-                document.getElementById(bgId).style.display = 'block';
-            }
-            
-            // Gestion de la musique
-            manageMusic(pageId);
-        };
-        
-        // Gestion de la musique
-        function manageMusic(pageId) {
-            // Arrête la musique actuelle si elle joue
-            if (currentMusic) {
-                currentMusic.pause();
-                currentMusic.currentTime = 0;
-            }
-            
-            // Joue la musique de la nouvelle page si elle existe
-            if (musics[pageId]) {
-                currentMusic = musics[pageId];
-                const promise = currentMusic.play();
-                
-                if (promise !== undefined) {
-                    promise.then(_ => {
-                        isMusicPlaying = true;
-                        document.getElementById('audioControl').textContent = '⏸️';
-                    }).catch(error => {
-                        // Si l'autoplay échoue, on attend un clic utilisateur
-                        document.getElementById('audioControl').textContent = '▶️';
-                        isMusicPlaying = false;
-                    });
-                }
-            }
-        }
-        
-        // Crée des étoiles brillantes
-        function createStars() {
-            const starsCount = 30;
-            const colors = ['#ffffff', '#ffdd59', '#ff9ff3', '#feca57', '#ff6b6b'];
-            
-            for (let i = 0; i < starsCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                
-                // Position aléatoire
-                const x = Math.random() * window.innerWidth;
-                const y = Math.random() * window.innerHeight;
-                
-                // Taille aléatoire
-                const size = Math.random() * 5 + 2;
-                
-                // Couleur aléatoire
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                
-                // Animation delay aléatoire
-                const delay = Math.random() * 2;
-                
-                star.style.left = `${x}px`;
-                star.style.top = `${y}px`;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                star.style.backgroundColor = color;
-                star.style.animationDelay = `${delay}s`;
-                
-                document.body.appendChild(star);
-            }
-        }
-        
-        // Création de pétales animés
-        function createPetals() {
-            const petals = ['❁', '✽', '✿', '🌸', '🌹'];
-            const container = document.createElement('div');
-            container.style.position = 'fixed';
-            container.style.top = '0';
-            container.style.left = '0';
-            container.style.width = '100%';
-            container.style.height = '100%';
-            container.style.pointerEvents = 'none';
-            container.style.zIndex = '-1';
-            document.body.appendChild(container);
-
-            for (let i = 0; i < 15; i++) {
-                const petal = document.createElement('div');
-                petal.className = 'petal';
-                petal.textContent = petals[Math.floor(Math.random() * petals.length)];
-                petal.style.left = Math.random() * 100 + 'vw';
-                petal.style.top = -20 + 'px';
-                petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
-                petal.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(petal);
-            }
-        }
-
-        // Initialisation au chargement
-        window.onload = function() {
-            // Déclenche le changement de hash pour afficher la bonne page
-            if (!window.location.hash) {
-                window.location.hash = 'accueil';
-            } else {
-                window.onhashchange();
-            }
-            
-            console.log("Joyeux Anniversaire ! 🎉");
-            
-            // Ajoute un effet de confettis
-            setTimeout(() => {
-                if (window.confetti) {
-                    confetti({
-                        particleCount: 150,
-                        spread: 90,
-                        origin: { y: 0.6 },
-                        colors: ['#ff7f00', '#ffdd59', '#ffffff', '#feca57']
-                    });
-                    
-                    // Crée des étoiles après les confettis
-                    setTimeout(createStars, 1000);
-                }
-            }, 800);
-
-            // Crée les pétales animés
-            createPetals();
-
-            // Tente de démarrer la musique automatiquement
-            const pageId = window.location.hash.substring(1) || 'accueil';
-            currentMusic = musics[pageId];
-            
-            // Réinitialise et tente de jouer
+    // Fonction pour gérer le changement de musique
+    function changeMusic(newMusic) {
+        // Arrête la musique actuelle si elle joue
+        if (currentMusic && !currentMusic.paused) {
+            currentMusic.pause();
             currentMusic.currentTime = 0;
-            const promise = currentMusic.play();
+        }
+        
+        // Démarre la nouvelle musique
+        currentMusic = newMusic;
+        if (currentMusic) {
+            currentMusic.volume = 0.5;
+            const playPromise = currentMusic.play();
             
-            if (promise !== undefined) {
-                promise.then(_ => {
-                    // Lecture réussie
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
                     isMusicPlaying = true;
                     document.getElementById('audioControl').textContent = '⏸️';
                 }).catch(error => {
-                    // Lecture échouée - on attend un clic utilisateur
+                    console.log("Auto-play bloqué: " + error);
                     document.getElementById('audioControl').textContent = '▶️';
                     isMusicPlaying = false;
                     
-                    // On active le son au premier clic n'importe où sur la page
-                    document.body.addEventListener('click', function firstClick() {
+                    // Active au premier clic utilisateur
+                    const enableAudio = () => {
                         currentMusic.play().then(_ => {
                             isMusicPlaying = true;
                             document.getElementById('audioControl').textContent = '⏸️';
                         });
-                        document.body.removeEventListener('click', firstClick);
-                    }, { once: true });
+                        document.removeEventListener('click', enableAudio);
+                    };
+                    document.addEventListener('click', enableAudio, { once: true });
                 });
             }
+        }
+    }
 
-            // Contrôle audio
-            document.getElementById('audioControl').addEventListener('click', function() {
+    // Gestion de la navigation
+    window.onhashchange = function() {
+        // Cache toutes les pages et tous les backgrounds
+        document.querySelectorAll('.overlay').forEach(page => {
+            page.style.display = 'none';
+        });
+        document.querySelectorAll('.bg-image').forEach(bg => {
+            bg.style.display = 'none';
+        });
+        
+        // Affiche la page correspondante
+        const pageId = window.location.hash.substring(1) || 'accueil';
+        document.getElementById(pageId).style.display = 'block';
+        
+        // Affiche le background correspondant
+        const bgId = backgrounds[pageId];
+        if (bgId) {
+            document.getElementById(bgId).style.display = 'block';
+        }
+        
+        // Change la musique
+        changeMusic(musics[pageId]);
+    };
+    
+    // Crée des étoiles brillantes
+    function createStars() {
+        const starsCount = 30;
+        const colors = ['#ffffff', '#ffdd59', '#ff9ff3', '#feca57', '#ff6b6b'];
+        
+        for (let i = 0; i < starsCount; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            const size = Math.random() * 5 + 2;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const delay = Math.random() * 2;
+            
+            star.style.left = `${x}px`;
+            star.style.top = `${y}px`;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.backgroundColor = color;
+            star.style.animationDelay = `${delay}s`;
+            
+            document.body.appendChild(star);
+        }
+    }
+    
+    // Création de pétales animés
+    function createPetals() {
+        const petals = ['❁', '✽', '✿', '🌸', '🌹'];
+        const container = document.createElement('div');
+        container.style.position = 'fixed';
+        container.style.top = '0';
+        container.style.left = '0';
+        container.style.width = '100%';
+        container.style.height = '100%';
+        container.style.pointerEvents = 'none';
+        container.style.zIndex = '-1';
+        document.body.appendChild(container);
+
+        for (let i = 0; i < 15; i++) {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.top = -20 + 'px';
+            petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            container.appendChild(petal);
+        }
+    }
+
+    // Initialisation au chargement
+    window.onload = function() {
+        // Déclenche le changement de hash pour afficher la bonne page
+        if (!window.location.hash) {
+            window.location.hash = 'accueil';
+        }
+        window.onhashchange();
+        
+        console.log("Joyeux Anniversaire ! 🎉");
+        
+        // Effet de confettis
+        setTimeout(() => {
+            if (window.confetti) {
+                confetti({
+                    particleCount: 150,
+                    spread: 90,
+                    origin: { y: 0.6 },
+                    colors: ['#ff7f00', '#ffdd59', '#ffffff', '#feca57']
+                });
+                setTimeout(createStars, 1000);
+            }
+        }, 800);
+
+        createPetals();
+
+        // Contrôle audio
+        document.getElementById('audioControl').addEventListener('click', function() {
+            if (currentMusic) {
                 if (isMusicPlaying) {
-                    // Mettre en pause
-                    if (currentMusic) {
-                        currentMusic.pause();
-                    }
+                    currentMusic.pause();
                     this.textContent = '▶️';
-                    isMusicPlaying = false;
                 } else {
-                    // Reprendre
-                    if (currentMusic) {
-                        currentMusic.play().catch(e => {
-                            console.log("Erreur de reprise audio: " + e);
-                        });
-                    }
+                    currentMusic.play().catch(e => console.log("Erreur:", e));
                     this.textContent = '⏸️';
-                    isMusicPlaying = true;
                 }
-            });
-        };
-    </script>
+                isMusicPlaying = !isMusicPlaying;
+            }
+        });
+    };
+</script>
     
     <!-- Script pour les confettis -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
