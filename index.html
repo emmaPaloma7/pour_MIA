@@ -1,746 +1,686 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pour_Ma_Mia</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>✨ BOT LUXE ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --orange-dazai: #ff7f00;
-            --orange-fonce: #e67300;
-            --noir: #1a1a1a;
-            --rouge-passion: #ff2d52;
-            --rouge-fonce: #cc1a3a;
+            --gold: #D4AF37;
+            --gold-light: #FFD700;
+            --gold-dark: #996515;
+            --black: #0A0A0A;
+            --black-light: #1A1A1A;
+            --white: #F5F5F5;
+            --gray: #888888;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            font-family: 'Georgia', serif;
-            background-color: var(--noir);
-            color: white;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
             min-height: 100vh;
+            line-height: 1.6;
+            background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
         }
         
-        /* Nouveau style pour les backgrounds */
-        .bg-image {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 25px 0;
             position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--gold);
+            box-shadow: 0 5px 30px rgba(212, 175, 55, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--gold-light);
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .logo i {
+            color: var(--gold-light);
+            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.7));
+        }
+        
+        /* Main content */
+        main {
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 80px 0 60px;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-            opacity: 0.6;
-            filter: grayscale(30%) brightness(0.7);
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            pointer-events: none;
         }
         
-        .overlay {
-            background: rgba(0, 0, 0, 0.7);
-            min-height: 100vh;
-            padding: 20px;
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            color: var(--gold-light);
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+            letter-spacing: 2px;
             position: relative;
-            box-sizing: border-box;
-        }
-        
-        h1 {
-            color: var(--rouge-passion);
-            font-size: clamp(1.8em, 6vw, 3em);
-            text-shadow: 2px 2px 4px var(--noir);
-            margin-top: 30px;
-            margin-bottom: 20px;
-            line-height: 1.3;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-        
-        /* Style des boutons */
-        .menu-btn {
-            background: var(--rouge-fonce);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            margin: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: all 0.3s;
-            font-size: clamp(0.9em, 3.5vw, 1.1em);
-            text-decoration: none;
             display: inline-block;
-            position: relative;
-            z-index: 10;
-            width: 140px;
-            max-width: 100%;
-            box-sizing: border-box;
+        }
+        
+        .hero h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 300;
             letter-spacing: 0.5px;
         }
         
-        .menu-btn:hover {
-            background: var(--rouge-passion);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 45, 82, 0.4);
-        }
-        
-        /* Bouton retour */
-        .back-btn {
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            font-size: 1.5em;
-            color: var(--rouge-passion);
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 500;
             text-decoration: none;
-            background: rgba(0,0,0,0.5);
-            padding: 8px 15px;
-            border-radius: 50%;
-            transition: all 0.3s;
-            z-index: 100;
-            border: 1px solid rgba(255,45,82,0.3);
-        }
-        
-        .back-btn:hover {
-            background: var(--rouge-passion);
-            color: white;
-            transform: scale(1.1);
-        }
-        
-        /* Contenu des pages */
-        .page-content {
-            background: rgba(31, 31, 31, 0.9);
-            padding: 25px;
-            border-radius: 10px;
-            max-width: 800px;
-            margin: 20px auto;
-            text-align: left;
-            border-left: 5px solid var(--rouge-passion);
-            animation: fadeIn 0.5s;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
             position: relative;
-            z-index: 10;
-            box-sizing: border-box;
-            word-wrap: break-word;
-            line-height: 1.8;
+            overflow: hidden;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
         }
         
-        /* Effet bandage */
-        .bandage {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            width: 50px;
-            height: 50px;
-            opacity: 0.8;
-            transition: transform 0.3s;
-            z-index: 100;
-            filter: hue-rotate(300deg);
-        }
-        
-        .bandage:hover {
-            transform: rotate(15deg);
-        }
-        
-        /* Style des listes */
-        ul {
-            padding-left: 20px;
-            margin: 15px 0;
-        }
-        
-        li {
-            margin-bottom: 12px;
-            line-height: 1.6;
-            position: relative;
-            padding-left: 25px;
-            font-size: clamp(0.9em, 3.5vw, 1em);
-        }
-        
-        li:before {
-            content: "🩹";
+        .btn::before {
+            content: "";
             position: absolute;
-            left: 0;
-            opacity: 0.7;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
         }
         
-        /* Citation */
-        .quote {
-            font-style: italic;
-            color: var(--rouge-passion);
-            margin: 20px 0;
-            font-size: clamp(1em, 4vw, 1.2em);
-            text-shadow: 1px 1px 2px var(--noir);
-            line-height: 1.5;
+        .btn:hover::before {
+            left: 100%;
         }
         
-        /* Images de fond spécifiques */
-        #accueil-bg {
-            background-image: url('https://i.pinimg.com/736x/9c/a9/1d/9ca91db555cc440ed3faf5612e1abe0d.jpg');
+        /* QR Section (hidden by default) */
+        .qr-section {
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px auto;
+            border: 1px solid var(--gold);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            max-width: 500px;
+            display: none;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
         
-        #qualites-bg {
-            background-image: url('https://i.pinimg.com/474x/f4/df/08/f4df08826c31cf2ab42bc26581fb0fdd.jpg');
-        }
-        
-        #defauts-bg {
-            background-image: url('https://i.pinimg.com/474x/dc/27/62/dc2762de454a28ea5fc327394691a3f9.jpg');
-        }
-        
-        #souvenirs-bg {
-            background-image: url('https://i.pinimg.com/736x/72/d3/d9/72d3d9f0e7a97aaacf79fc0b00c6b3f7.jpg');
-        }
-        
-        #resume-bg {
-            background-image: url('https://i.pinimg.com/736x/08/2d/a7/082da7363bc7d2c9c13c0db8445674b6.jpg');
-        }
-        
-        /* Étoiles brillantes */
-        .star {
-            position: fixed;
-            background-color: #fff;
-            border-radius: 50%;
+        .qr-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
             pointer-events: none;
-            z-index: 5;
-            animation: twinkle 2s infinite alternate;
         }
         
-        @keyframes twinkle {
-            0% { opacity: 0.2; transform: scale(0.5); }
-            100% { opacity: 1; transform: scale(1); }
+        .qr-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--gold-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
         }
         
-        /* Discours */
-        .discours {
-            max-width: 90%;
-            margin: 30px auto 20px;
-            padding: 30px;
-            background: rgba(31, 31, 31, 0.8);
-            border-radius: 10px;
-            border-top: 3px solid var(--rouge-passion);
-            font-style: italic;
-            line-height: 1.8;
-            position: relative;
-            z-index: 10;
-            box-sizing: border-box;
-            font-size: clamp(1em, 3.5vw, 1.1em);
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        .qr-section h2 i {
+            font-size: 1.5rem;
         }
         
-        .discours:before {
-            content: "\"";
-            font-size: 4em;
-            color: var(--rouge-passion);
-            opacity: 0.2;
-            position: absolute;
-            top: -30px;
-            left: 10px;
-            font-family: serif;
-        }
-        
-        .signature {
-            text-align: right;
-            font-weight: bold;
-            margin-top: 25px;
-            color: var(--rouge-passion);
-            font-size: 1.2em;
-            font-style: normal;
-        }
-
-        /* Nouveaux styles pour le menu */
-        .menu-container {
+        .qr-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 25px 0;
         }
-
-        .menu-top-row {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
+        
+        #qrImage {
             width: 100%;
-        }
-
-        .menu-bottom-row {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-
-        /* Contrôle audio */
-        .audio-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.7);
+            max-width: 250px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid var(--gold);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
             padding: 10px;
-            border-radius: 50%;
-            z-index: 100;
+            background: white;
+        }
+        
+        #qrStatus {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-top: 20px;
+            font-style: italic;
+            text-align: center;
+        }
+        
+        .qr-options {
+            width: 100%;
+            margin-top: 30px;
+        }
+        
+        .qr-option {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
             cursor: pointer;
-            color: var(--rouge-passion);
-            border: 1px solid var(--rouge-passion);
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
         }
         
-        .audio-control:hover {
-            background: var(--rouge-passion);
+        .qr-option:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        
+        .qr-option h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--gold-light);
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.5px;
+        }
+        
+        .qr-option i {
+            font-size: 1.2rem;
+        }
+        
+        .qr-option p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            padding-left: 32px;
+        }
+        
+        .phone-input {
+            display: none;
+            margin-top: 20px;
+            width: 100%;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .phone-input input {
+            width: 100%;
+            padding: 14px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
             color: white;
-            transform: scale(1.1);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
         }
         
-        /* Pétales animés */
-        .petal {
+        .phone-input input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+            padding: 14px;
+        }
+        
+        /* Commands section */
+        .commands-section {
+            margin-top: 80px;
+            position: relative;
+        }
+        
+        .commands-section::before {
+            content: "";
             position: absolute;
-            color: #ff6b6b;
-            opacity: 0.7;
-            font-size: 18px;
-            animation: fall linear infinite;
-            z-index: -1;
+            top: -50px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
         
-        @keyframes fall {
-            to { transform: translateY(100vh) rotate(360deg); }
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--gold-light);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            letter-spacing: 1px;
         }
         
-        /* Améliorations pour les petits écrans */
+        .tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gray);
+            font-weight: 500;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.5px;
+        }
+        
+        .tab-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-light);
+            border-color: var(--gold);
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            border-color: var(--gold);
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .command-category {
+            margin-bottom: 40px;
+        }
+        
+        .category-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--gold-light);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            letter-spacing: 0.5px;
+        }
+        
+        .category-title i {
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+        
+        .command-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .command-card {
+            background: rgba(26, 26, 26, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .command-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .command-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--gold), var(--gold-dark));
+        }
+        
+        .command-name {
+            font-weight: 600;
+            color: var(--gold-light);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.5px;
+        }
+        
+        .command-name i {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+        
+        .command-desc {
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 10, 0.9);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--gold);
+            backdrop-filter: blur(10px);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-link {
+            color: var(--gray);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: var(--gold-light);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            color: var(--gray);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .overlay {
-                padding: 15px;
+            .hero h1 {
+                font-size: 2.5rem;
             }
             
-            .menu-btn {
-                padding: 10px 15px;
-                margin: 5px;
-                width: 120px;
+            .hero p {
+                font-size: 1rem;
             }
             
-            .page-content {
-                padding: 15px;
+            .section-title {
+                font-size: 2rem;
             }
             
-            .discours {
-                padding: 20px;
-                margin: 20px auto;
+            .command-grid {
+                grid-template-columns: 1fr;
             }
             
-            .discours:before {
-                font-size: 3em;
-                top: -20px;
-            }
-            
-            .bandage {
-                width: 40px;
-                height: 40px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                margin-top: 50px;
-                font-size: 1.8em;
-            }
-            
-            .menu-btn {
-                width: 100%;
-                max-width: 200px;
-                margin: 5px 0;
-            }
-            
-            .menu-top-row {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .back-btn {
-                font-size: 1.2em;
-                padding: 6px 12px;
-            }
-            
-            li {
-                padding-left: 22px;
-                margin-bottom: 10px;
+            .qr-section {
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Images de fond pour chaque section -->
-    <img id="accueil-bg" class="bg-image" style="display:block;">
-    <img id="qualites-bg" class="bg-image" style="display:none;">
-    <img id="defauts-bg" class="bg-image" style="display:none;">
-    <img id="souvenirs-bg" class="bg-image" style="display:none;">
-    <img id="resume-bg" class="bg-image" style="display:none;">
-
-    <!-- Audio elements for background music -->
-    <audio id="accueilMusic" loop>
-        <source src="videoplayback (1).mp3" type="audio/mpeg">
-        Votre navigateur ne supporte pas l'élément audio.
-    </audio>
-    <audio id="qualitesMusic" loop>
-        <source src="qualite.mp3" type="audio/mpeg">
-        Votre navigateur ne supporte pas l'élément audio.
-    </audio>
-    <audio id="defautsMusic" loop>
-        <source src="Alan-Walker-Lost-Control-_-DJ-Flam-Urban-Bac-XkXpaL-iMNY.mp3" type="audio/mpeg">
-        Votre navigateur ne supporte pas l'élément audio.
-    </audio>
-    <audio id="souvenirsMusic" loop>
-        <source src="videoplayback.mp3" type="audio/mpeg">
-        Votre navigateur ne supporte pas l'élément audio.
-    </audio>
-    <audio id="resumeMusic" loop>
-        <source src="5555.mp3" type="audio/mpeg">
-        Votre navigateur ne supporte pas l'élément audio.
-    </audio>
-
-    <!-- Contrôle audio -->
-    <div class="audio-control" id="audioControl">⏸️</div>
-
-    <!-- Page d'accueil -->
-    <div id="accueil" class="overlay">
-        <img src="https://i.pinimg.com/474x/f4/df/08/f4df08826c31cf2ab42bc26581fb0fdd.jpg" class="bandage" alt="Bandage Dazai">
-        
-        <h1>💌 Déclaration pour ma Mia</h1>
-        
-        <!-- Menu principal - Nouvelle structure -->
-        <div class="menu-container">
-            <div class="menu-top-row">
-                <a href="#qualites" class="menu-btn">Tes Lumières</a>
-                <a href="#defauts" class="menu-btn">Tes Nuances</a>
-                <a href="#souvenirs" class="menu-btn">Nos Étoiles</a>
-            </div>
-            <div class="menu-bottom-row">
-                <a href="#resume" class="menu-btn">Notre Galaxie</a>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-crown"></i>
+                    <span>LUXE BOT</span>
+                </a>
             </div>
         </div>
-        
-        <!-- Discours -->
-        <div class="discours" style="background: rgba(26, 26, 26, 0.8); border: 1px solid var(--rouge-passion); box-shadow: 0 0 20px rgba(255, 45, 82, 0.3);">
-            <p style="font-size: 1.1em; line-height: 1.8; text-align: center;">Ma chère Mia, <span style="color: #ff6b6b; font-size: 1.3em;">💖</span></p>
-            
-            <p style="position: relative; padding-left: 20px;">
-                <span style="position: absolute; left: 0; color: var(--rouge-passion); font-size: 2em; line-height: 0.8;">"</span>
-                Il y a des sentiments que les mots peinent à exprimer... <br>
-                Pourtant aujourd'hui, je voudrais que ces lettres deviennent <br>
-                l'écrin de tout l'amour qui pulse dans mon cœur. <br>
-                <span style="display: inline-block; margin: 10px 0; color: var(--rouge-passion);">✧･ﾟ: *✧･ﾟ:* *:･ﾟ✧*:･ﾟ✧</span><br>
-                Tu es l'éclair qui a déchiré mes nuits, <br>
-                La mélodie qui a donné un rythme à mon existence. <br>
-                Avant toi, je marchais dans le brouillard. <br>
-                Depuis toi, chaque pas a la saveur de l'éternité.
-            </p>
-            
-            <div style="display: flex; align-items: center; margin: 20px 0;">
-                <div style="flex: 1; border-top: 1px dashed var(--rouge-passion);"></div>
-                <span style="padding: 0 10px; color: var(--rouge-passion);">✿</span>
-                <div style="flex: 1; border-top: 1px dashed var(--rouge-passion);"></div>
-            </div>
-            
-            <ul style="list-style-type: none; padding-left: 0; text-align: center;">
-                <li style="margin-bottom: 15px;">🌠 <strong>Ton regard</strong> - Un univers où je me perds avec délice</li>
-                <li style="margin-bottom: 15px;">🌹 <strong>Ta présence</strong> - Un cadeau que je n'ose croire mériter</li>
-                <li style="margin-bottom: 15px;">🎭 <strong>Ton âme</strong> - Ce chef-d'œuvre sensible qui m'ensorcelle</li>
-            </ul>
-            
-            <p style="font-style: italic; text-align: center; position: relative;">
-                <span style="color: var(--rouge-passion);">« Je ne promets pas des montagnes dorées, <br>
-                Mais ma main toujours tendue, mon cœur toujours ouvert, <br>
-                Un amour qui se renouvelle à chaque aube. »</span>
-            </p>
-            
-            <div class="signature" style="margin-top: 30px; text-align: center; font-family: 'Brush Script MT', cursive;">
-                <p style="margin: 0; font-size: 1.3em; color: #ff6b6b;">Pour l'éternité et au-delà,</p>
-                <p style="margin: 0; font-size: 1.5em; color: var(--rouge-passion);">Ton amoureux transi <span style="font-size: 1.2em;">🌙</span></p>
-                <div style="margin-top: 10px; font-size: 0.8em; color: #aaa;">(Celui qui garde ton sourire gravé dans son âme)</div>
-            </div>
-            
-            <!-- Effet pétales tombants -->
-            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: -1;">
-                <div class="petal" style="position: absolute; color: #ff6b6b; opacity: 0.7; font-size: 20px;">❁</div>
-                <div class="petal" style="position: absolute; color: #ff9ff3; opacity: 0.7; font-size: 18px;">✽</div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Page Qualités -->
-    <div id="qualites" class="overlay" style="display:none;">
-        <a href="#accueil" class="back-btn">←</a>
-        <img src="" class="bandage" alt="Bandage Dazai">
-        
-        <h1>✨ Tes Lumineuses Qualités</h1>
-        
-        <div class="page-content">
-            <div class="discours" style="background: rgba(26, 26, 26, 0.7); border-top: 3px solid var(--rouge-passion);">
-                <p>Mia, tu es un miracle à mes yeux... 🌟</p>
-                
-                <p>Tu es belle - pas seulement dans cette grâce naturelle qui fait tourner les têtes, mais dans cette lumière intérieure qui traverse chacun de tes gestes. Ta voix est une caresse, tes silences sont éloquents, et ton sourire... ton sourire est mon antidote à toutes les peines du monde. 🥀➡️🌻</p>
-                
-                <p>Ce que j'adore chez toi :</p>
-                
-                <ul style="list-style-type: none; padding-left: 0;">
-                    <li style="padding-left: 0; margin-bottom: 15px;">💎 <strong>Ta résilience</strong> - Même brisée, tu trouves la force de reconstruire, et ça m'épate</li>
-                    <li style="padding-left: 0; margin-bottom: 15px;">🌹 <strong>Ta douceur</strong> - Cette façon unique de comprendre sans juger, d'écouter vraiment</li>
-                    <li style="padding-left: 0; margin-bottom: 15px;">🎨 <strong>Ta créativité</strong> - Tu transformes le quotidien en œuvre d'art sans même t'en rendre compte</li>
-                    <li style="padding-left: 0; margin-bottom: 15px;">⚡ <strong>Ton intuition</strong> - Comme si tu lisais dans mon âme avant même que je ne parle</li>
-                </ul>
-                
-                <p>Quand ton rire fuse, c'est toute ma mélancolie qui s'envole. 😄✈️ Quand tu poses ta main sur la mienne, c'est tout mon être qui retrouve son équilibre. 🤲💫</p>
-                
-                <p>Tu es ce paradoxe rare : à la fois mon havre de paix et ma plus belle tempête. Chaque jour à tes côtés est une page blanche qu'on remplit de couleurs vives. 🎨📖</p>
-                
-                <div class="signature" style="margin-top: 25px;">Celui qui trouve le bonheur dans ton simple regard<br>🌙✨</div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Page Défauts -->
-    <div id="defauts" class="overlay" style="display:none;">
-        <a href="#accueil" class="back-btn">←</a>
-        <img src="https://i.pinimg.com/736x/9c/a9/1d/9ca91db555cc440ed3faf5612e1abe0d.jpg" class="bandage" alt="Bandage Dazai">
-        
-        <h1>😅 Tes "Défauts"</h1>
-        
-        <div class="page-content">
-            <h3>Ce qui te rend unique :</h3>
-            <div class="quote">
-                <p>Tu as parfois ce petit côté têtue et un brin impatiente 😅, mais même ça, je le trouve adorable… parce que ça fait partie de toi, Mia. 💞</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Page Souvenirs -->
-    <div id="souvenirs" class="overlay" style="display:none;">
-        <a href="#accueil" class="back-btn">←</a>
-        <img src="https://i.pinimg.com/474x/f4/df/08/f4df08826c31cf2ab42bc26581fb0fdd.jpg" class="bandage" alt="Bandage Dazai">
-        
-        <h1>📸 Nos Souvenirs</h1>
-        
-        <div class="page-content">
-            <div class="discours">
-                <p>Ma douce Mia, 🌸</p>
-                
-                <p>Par où commencer ? Il y a tant de souvenirs dans ma tête, tant de moments avec toi qui me reviennent en boucle comme une chanson qu'on n'oublie jamais... 🎶💭</p>
-                
-                <p>Je me souviens de notre premier regard. Ce moment-là, suspendu dans le temps, où le monde autour de moi s'est figé... il n'y avait plus que toi. ✨👀 Tu étais là, rayonnante, sans même t'en rendre compte. Et moi, j'étais là, déjà en train de tomber... pas juste amoureux, mais profondément, irrémédiablement attaché à toi 💘.</p>
-                
-                <p>Je me souviens de nos premiers fous rires, de ces discussions sans fin qui duraient jusqu'à ce que le sommeil nous prenne de force 😴😂. De ces regards complices, de ces silences pleins de sens... de chaque détail que je garde précieusement dans ma mémoire comme des trésors. 🪄💬</p>
-                
-                <p>Je me souviens de la façon dont tu me regardais, comme si j'étais quelqu'un de spécial. Et crois-moi, Mia, c'est ce regard-là qui m'a donné la force d'être meilleur. 💪❤ Tu m'as vu même quand moi je ne me voyais plus. Tu as cru en moi dans mes silences, dans mes doutes, dans mes chutes. Tu as été mon soutien invisible, mon refuge 🫂🌧🌈.</p>
-                
-                <p>Je me souviens de nos promenades, de nos photos idiotes 📸😂, de ta main dans la mienne quand il faisait froid ❄🖐, de ton rire qui réchauffait mes hivers... et de tous ces instants simples mais précieux. Ils sont gravés en moi, Mia. À jamais.</p>
-                
-                <p>Je me souviens aussi de nos moments plus durs, de ces instants où on a douté, pleuré, trébuché... Mais même dans ces tempêtes, tu étais là 🌪💔. Et c'est dans ces moments-là que j'ai compris : ce qu'on a, toi et moi, est plus fort que tout. 🔐💞</p>
-                
-                <p>Aujourd'hui, je repense à tout ça, les larmes aux yeux et le cœur rempli. Pas de tristesse, non... juste de l'amour. Immense. Éternel. 💓🕊</p>
-                
-                <p>Parce que tu as marqué ma vie à jamais. Parce que peu importe le temps qui passe, je n'oublierai jamais ce que j'ai vécu avec toi. Tu resteras cette lumière dans mes souvenirs, ce battement particulier dans mon cœur, ce prénom qui aura toujours un goût d'amour pur : Mia. 🌹💫</p>
-                
-                <p>Merci pour chaque sourire, chaque caresse, chaque souvenir. Merci d'avoir été toi. Merci d'avoir été nous. 💌</p>
-                
-                <p>Je t'aimerai toujours, à travers les souvenirs, à travers les échos du passé, à travers les battements de mon cœur. 🕰❤‍🔥</p>
-                
-                <div class="signature">Pour toujours dans ma mémoire et mon amour,<br>Ton éternel rêveur 🌙💖</div>
-            </div>
-        </div>
-    </div>
+    </header>
 
-    <!-- Page Résumé -->
-    <div id="resume" class="overlay" style="display:none;">
-        <a href="#accueil" class="back-btn">←</a>
-        <img src="https://i.pinimg.com/474x/dc/27/62/dc2762de454a28ea5fc327394691a3f9.jpg" class="bandage" alt="Bandage Dazai">
-        
-        <h1>📜 Notre Galaxie</h1>
-        
-        <div class="page-content">
-            <div class="quote">
-                <p>Tout a commencé par un regard, puis des mots, des rires, et petit à petit… un lien s'est tissé. ✨</p>
-                <p>On a partagé des moments uniques, des hauts, des bas, mais surtout beaucoup d'amour. 💑</p>
-                <p>Chaque jour passé avec toi est devenu un souvenir précieux que je garde dans mon cœur. 🕊</p>
-                <p>Notre histoire, c'est plus qu'un chapitre : c'est une vraie aventure, gravée à jamais. 📖❤</p>
-            </div>
-        </div>
-    </div>
-<script>
-    // Images de fond pour chaque section
-    const backgrounds = {
-        'accueil': 'accueil-bg', 
-        'qualites': 'qualites-bg',
-        'defauts': 'defauts-bg',
-        'souvenirs': 'souvenirs-bg',
-        'resume': 'resume-bg'
-    };
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>BOT EXCLUSIF</h1>
+                <p>Un bot WhatsApp premium avec des fonctionnalités haut de gamme pour une expérience exceptionnelle</p>
+                <button id="connectBtn" class="btn">SE CONNECTER</button>
+            </section>
 
-    // Musiques pour chaque section
-    const musics = {
-        'accueil': document.getElementById('accueilMusic'),
-        'qualites': document.getElementById('qualitesMusic'),
-        'defauts': document.getElementById('defautsMusic'),
-        'souvenirs': document.getElementById('souvenirsMusic'),
-        'resume': document.getElementById('resumeMusic')
-    };
-
-    // Variable pour suivre la musique actuelle
-    let currentMusic = null;
-    let isMusicPlaying = false;
-
-    // Fonction pour gérer le changement de musique
-    function changeMusic(newMusic) {
-        // Arrête la musique actuelle si elle joue
-        if (currentMusic && !currentMusic.paused) {
-            currentMusic.pause();
-            currentMusic.currentTime = 0;
-        }
-        
-        // Démarre la nouvelle musique
-        currentMusic = newMusic;
-        if (currentMusic) {
-            currentMusic.volume = 0.5;
-            const playPromise = currentMusic.play();
-            
-            if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                    isMusicPlaying = true;
-                    document.getElementById('audioControl').textContent = '⏸️';
-                }).catch(error => {
-                    console.log("Auto-play bloqué: " + error);
-                    document.getElementById('audioControl').textContent = '▶️';
-                    isMusicPlaying = false;
+            <!-- QR Section (hidden by default) -->
+            <section class="qr-section" id="qrSection">
+                <h2><i class="fas fa-lock"></i> Connexion Privée</h2>
+                <div class="qr-content">
+                    <img id="qrImage" src="https://i.pinimg.com/736x/d8/11/10/d81110f74b45542aa26eddc290592ed8.jpg" alt="QR Code">
+                    <p id="qrStatus">Scannez ce code exclusif avec WhatsApp pour accéder au bot</p>
                     
-                    // Active au premier clic utilisateur
-                    const enableAudio = () => {
-                        currentMusic.play().then(_ => {
-                            isMusicPlaying = true;
-                            document.getElementById('audioControl').textContent = '⏸️';
-                        });
-                        document.removeEventListener('click', enableAudio);
-                    };
-                    document.addEventListener('click', enableAudio, { once: true });
-                });
-            }
-        }
-    }
+                    <div class="qr-options">
+                        <div class="qr-option" onclick="showPhoneInput()">
+                            <h3><i class="fas fa-mobile-alt"></i> Accès VIP par numéro</h3>
+                            <p>Entrez votre numéro WhatsApp pour une connexion immédiate</p>
+                            
+                            <div class="phone-input" id="phoneInput">
+                                <input type="tel" id="phoneNumber" placeholder="Votre numéro WhatsApp">
+                                <button class="btn btn-block" onclick="sendPhoneNumber()">VALIDER</button>
+                            </div>
+                        </div>
+                        
+                        <div class="qr-option" onclick="window.location.href='https://wa.me/2377699051733'">
+                            <h3><i class="fas fa-qrcode"></i> Scanner le Code VIP</h3>
+                            <p>Ouvrez WhatsApp et scannez le code d'accès exclusif</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    // Gestion de la navigation
-    window.onhashchange = function() {
-        // Cache toutes les pages et tous les backgrounds
-        document.querySelectorAll('.overlay').forEach(page => {
-            page.style.display = 'none';
-        });
-        document.querySelectorAll('.bg-image').forEach(bg => {
-            bg.style.display = 'none';
-        });
-        
-        // Affiche la page correspondante
-        const pageId = window.location.hash.substring(1) || 'accueil';
-        document.getElementById(pageId).style.display = 'block';
-        
-        // Affiche le background correspondant
-        const bgId = backgrounds[pageId];
-        if (bgId) {
-            document.getElementById(bgId).style.display = 'block';
-        }
-        
-        // Change la musique
-        changeMusic(musics[pageId]);
-    };
-    
-    // Crée des étoiles brillantes
-    function createStars() {
-        const starsCount = 30;
-        const colors = ['#ffffff', '#ffdd59', '#ff9ff3', '#feca57', '#ff6b6b'];
-        
-        for (let i = 0; i < starsCount; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            
-            const x = Math.random() * window.innerWidth;
-            const y = Math.random() * window.innerHeight;
-            const size = Math.random() * 5 + 2;
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            const delay = Math.random() * 2;
-            
-            star.style.left = `${x}px`;
-            star.style.top = `${y}px`;
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
-            star.style.backgroundColor = color;
-            star.style.animationDelay = `${delay}s`;
-            
-            document.body.appendChild(star);
-        }
-    }
-    
-    // Création de pétales animés
-    function createPetals() {
-        const petals = ['❁', '✽', '✿', '🌸', '🌹'];
-        const container = document.createElement('div');
-        container.style.position = 'fixed';
-        container.style.top = '0';
-        container.style.left = '0';
-        container.style.width = '100%';
-        container.style.height = '100%';
-        container.style.pointerEvents = 'none';
-        container.style.zIndex = '-1';
-        document.body.appendChild(container);
+            <section class="commands-section">
+                <h2 class="section-title">Commandes Premium</h2>
+                
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="openTab(event, 'general')">Élégance</button>
+                    <button class="tab-btn" onclick="openTab(event, 'games')">Divertissement</button>
+                    <button class="tab-btn" onclick="openTab(event, 'pvp')">Prestige</button>
+                    <button class="tab-btn" onclick="openTab(event, 'guilds')">Exclusivité</button>
+                    <button class="tab-btn" onclick="openTab(event, 'admin')">Privilège</button>
+                </div>
+                
+                <div id="general" class="tab-content active">
+                    <div class="command-category">
+                        <h3 class="category-title"><i class="fas fa-gem"></i> Commandes Élégantes</h3>
+                        <div class="command-grid">
+                            <div class="command-card">
+                                <div class="command-name"><i class="fas fa-star"></i> menu</div>
+                                <div class="command-desc">Affiche le menu principal luxueux</div>
+                            </div>
+                            <div class="command-card">
+                                <div class="command-name"><i class="fas fa-star"></i> tagall</div>
+                                <div class="command-desc">Mentionne tous les membres VIP</div>
+                            </div>
+                            <div class="command-card">
+                                <div class="command-name"><i class="fas fa-star"></i> url</div>
+                                <div class="command-desc">Partage un lien exclusif</div>
+                            </div>
+                            <div class="command-card">
+                                <div class="command-name"><i class="fas fa-star"></i> ping</div>
+                                <div class="command-desc">Vérifie la latence premium</div>
+                            </div>
+                            <div class="command-card">
+                                <div class="command-name"><i class="fas fa-star"></i> skills</div>
+                                <div class="command-desc">Liste des compétences exclusives</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other tabs content would be here -->
+                <!-- I've shortened the content for this example -->
+                
+            </section>
+        </div>
+    </main>
 
-        for (let i = 0; i < 15; i++) {
-            const petal = document.createElement('div');
-            petal.className = 'petal';
-            petal.textContent = petals[Math.floor(Math.random() * petals.length)];
-            petal.style.left = Math.random() * 100 + 'vw';
-            petal.style.top = -20 + 'px';
-            petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
-            container.appendChild(petal);
-        }
-    }
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                </div>
+                <p class="copyright">© 2023 LUXE BOT | Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
 
-    // Initialisation au chargement
-    window.onload = function() {
-        // Déclenche le changement de hash pour afficher la bonne page
-        if (!window.location.hash) {
-            window.location.hash = 'accueil';
-        }
-        window.onhashchange();
-        
-        console.log("Joyeux Anniversaire ! 🎉");
-        
-        // Effet de confettis
-        setTimeout(() => {
-            if (window.confetti) {
-                confetti({
-                    particleCount: 150,
-                    spread: 90,
-                    origin: { y: 0.6 },
-                    colors: ['#ff7f00', '#ffdd59', '#ffffff', '#feca57']
-                });
-                setTimeout(createStars, 1000);
-            }
-        }, 800);
-
-        createPetals();
-
-        // Contrôle audio
-        document.getElementById('audioControl').addEventListener('click', function() {
-            if (currentMusic) {
-                if (isMusicPlaying) {
-                    currentMusic.pause();
-                    this.textContent = '▶️';
-                } else {
-                    currentMusic.play().catch(e => console.log("Erreur:", e));
-                    this.textContent = '⏸️';
-                }
-                isMusicPlaying = !isMusicPlaying;
+    <script>
+        // Toggle QR section
+        document.getElementById('connectBtn').addEventListener('click', function() {
+            const qrSection = document.getElementById('qrSection');
+            if (qrSection.style.display === 'block') {
+                qrSection.style.display = 'none';
+            } else {
+                qrSection.style.display = 'block';
+                qrSection.scrollIntoView({ behavior: 'smooth' });
             }
         });
-    };
-</script>
-    
-    <!-- Script pour les confettis -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
+        // Show phone input
+        function showPhoneInput() {
+            document.getElementById('phoneInput').style.display = 'block';
+        }
+
+        // Send phone number
+        function sendPhoneNumber() {
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            if (!phoneNumber) {
+                alert('Veuillez entrer votre numéro WhatsApp VIP');
+                return;
+            }
+            
+            const whatsappUrl = `https://wa.me/2377699051733?text=Mon%20numéro%20WhatsApp%20exclusif%20est%20${encodeURIComponent(phoneNumber)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            document.getElementById('qrStatus').textContent = `Accès VIP confirmé pour: ${phoneNumber}`;
+            document.getElementById('phoneInput').style.display = 'none';
+        }
+
+        // Tab system
+        function openTab(evt, tabName) {
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            const tabButtons = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
 </html>
