@@ -493,6 +493,118 @@
             letter-spacing: 0.5px;
         }
         
+        /* New styles for navigation */
+        .back-btn {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold);
+            color: var(--gold-light);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: rgba(212, 175, 55, 0.3);
+            transform: translateX(-5px);
+        }
+        
+        .info-card {
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid var(--gold);
+            position: relative;
+        }
+        
+        .info-card h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-light);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .info-card p {
+            margin-bottom: 8px;
+            color: var(--gray);
+        }
+        
+        .info-card .divider {
+            height: 1px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            margin: 20px 0;
+        }
+        
+        .command-section {
+            margin-bottom: 40px;
+        }
+        
+        .command-section h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-light);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .command-list {
+            list-style-type: none;
+        }
+        
+        .command-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--gold);
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 0 5px 5px 0;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .command-name {
+            color: var(--gold-light);
+            font-weight: 500;
+            width: 200px;
+        }
+        
+        .command-desc {
+            color: var(--gray);
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .section-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .section-btn {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold);
+            color: var(--gold-light);
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .section-btn:hover {
+            background: rgba(212, 175, 55, 0.3);
+        }
+        
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -525,6 +637,19 @@
             
             .qr-section {
                 padding: 30px 20px;
+            }
+            
+            .section-nav {
+                justify-content: center;
+            }
+            
+            .command-item {
+                flex-direction: column;
+            }
+            
+            .command-name {
+                width: 100%;
+                margin-bottom: 5px;
             }
         }
     </style>
@@ -576,47 +701,730 @@
             </section>
 
             <section class="commands-section">
-                <h2 class="section-title">Commandes Premium</h2>
+                <button class="back-btn" onclick="window.location.href='#'">
+                    <i class="fas fa-arrow-left"></i> Retour à l'accueil
+                </button>
                 
-                <div class="tabs">
-                    <button class="tab-btn active" onclick="openTab(event, 'general')">Élégance</button>
-                    <button class="tab-btn" onclick="openTab(event, 'games')">Divertissement</button>
-                    <button class="tab-btn" onclick="openTab(event, 'pvp')">Prestige</button>
-                    <button class="tab-btn" onclick="openTab(event, 'guilds')">Exclusivité</button>
-                    <button class="tab-btn" onclick="openTab(event, 'admin')">Privilège</button>
+                <div class="info-card">
+                    <h2><i class="fas fa-shield-alt"></i> BOT MULTIFONCTIONNEL</h2>
+                    <div class="divider"></div>
+                    <p><strong>Créateur:</strong> AK</p>
+                    <p><strong>Description:</strong> Bot multifonctionnalités pour s'amuser</p>
+                    <p><strong>Stats globales:</strong> Nombre total de commandes : 152</p>
                 </div>
                 
-                <div id="general" class="tab-content active">
-                    <div class="command-category">
-                        <h3 class="category-title"><i class="fas fa-gem"></i> Commandes Élégantes</h3>
-                        <div class="command-grid">
-                            <div class="command-card">
-                                <div class="command-name"><i class="fas fa-star"></i> menu</div>
-                                <div class="command-desc">Affiche le menu principal luxueux</div>
-                            </div>
-                            <div class="command-card">
-                                <div class="command-name"><i class="fas fa-star"></i> tagall</div>
-                                <div class="command-desc">Mentionne tous les membres VIP</div>
-                            </div>
-                            <div class="command-card">
-                                <div class="command-name"><i class="fas fa-star"></i> url</div>
-                                <div class="command-desc">Partage un lien exclusif</div>
-                            </div>
-                            <div class="command-card">
-                                <div class="command-name"><i class="fas fa-star"></i> ping</div>
-                                <div class="command-desc">Vérifie la latence premium</div>
-                            </div>
-                            <div class="command-card">
-                                <div class="command-name"><i class="fas fa-star"></i> skills</div>
-                                <div class="command-desc">Liste des compétences exclusives</div>
-                            </div>
-                        </div>
-                    </div>
+                <h2 class="section-title">🌟 COMMANDES DU BOT 🌟</h2>
+                
+                <div class="section-nav">
+                    <button class="section-btn" onclick="scrollToSection('general')">📋 Général</button>
+                    <button class="section-btn" onclick="scrollToSection('anime')">🎲 Personnage animé</button>
+                    <button class="section-btn" onclick="scrollToSection('truth')">🎲 Action/Vérité</button>
+                    <button class="section-btn" onclick="scrollToSection('country')">🌍 Nom de pays</button>
+                    <button class="section-btn" onclick="scrollToSection('pvp')">⚔ Duels PvP</button>
+                    <button class="section-btn" onclick="scrollToSection('guilds')">🏰 Guildes</button>
+                    <button class="section-btn" onclick="scrollToSection('creator')">🛠 Créateur</button>
+                    <button class="section-btn" onclick="scrollToSection('items')">📦 Items</button>
+                    <button class="section-btn" onclick="scrollToSection('jobs')">💼 Jobs</button>
+                    <button class="section-btn" onclick="scrollToSection('quiz')">❓ Quiz</button>
+                    <button class="section-btn" onclick="scrollToSection('ai')">🤖 AI</button>
+                    <button class="section-btn" onclick="scrollToSection('user')">👤 Utilisateur</button>
                 </div>
                 
-                <!-- Other tabs content would be here -->
-                <!-- I've shortened the content for this example -->
+                <!-- General Commands -->
+                <div id="general" class="command-section">
+                    <h3><i class="fas fa-list"></i> 📋 Général (13 commandes)</h3>
+                    <ul class="command-list">
+                        <li class="command-item">
+                            <span class="command-name">• menu</span>
+                            <span class="command-desc">Affiche le menu principal</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• tagall</span>
+                            <span class="command-desc">Mentionne tous les membres</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• url</span>
+                            <span class="command-desc">Partage un lien</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• ping</span>
+                            <span class="command-desc">Vérifie la latence</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• skills</span>
+                            <span class="command-desc">Liste des compétences</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• magics</span>
+                            <span class="command-desc">Liste des magies</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• skillstype</span>
+                            <span class="command-desc">Types de compétences</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• skillscat</span>
+                            <span class="command-desc">Catégories de compétences</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• getskill</span>
+                            <span class="command-desc">Récupère une compétence par nom</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• getskillid</span>
+                            <span class="command-desc">Récupère une compétence par ID</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• jobs</span>
+                            <span class="command-desc">Liste des jobs disponibles</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• pvpleaderboard</span>
+                            <span class="command-desc">Classement PvP</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• send</span>
+                            <span class="command-desc">Envoie un message ou fichier</span>
+                        </li>
+                    </ul>
+                </div>
                 
+                <!-- Anime Character Games -->
+                <div id="anime" class="command-section">
+                    <h3><i class="fas fa-gamepad"></i> 🎲 Jeux : Personnage animé (9 commandes)</h3>
+                    <ul class="command-list">
+                        <li class="command-item">
+                            <span class="command-name">• jeux nom de personnage anime</span>
+                            <span class="command-desc">Recherche un perso d'anime</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• animechars</span>
+                            <span class="command-desc">Liste de persos d'anime</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• join</span>
+                            <span class="command-desc">Rejoindre le jeu</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• bye</span>
+                            <span class="command-desc">Quitter le jeu</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• rematch</span>
+                            <span class="command-desc">Rejouer</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• mode</span>
+                            <span class="command-desc">Choisir le mode</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• start</span>
+                            <span class="command-desc">Démarrer la partie</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• endgame</span>
+                            <span class="command-desc">Terminer la partie</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• dashboard</span>
+                            <span class="command-desc">Voir le tableau de bord</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Truth or Dare Games -->
+                <div id="truth" class="command-section">
+                    <h3><i class="fas fa-dice"></i> 🎲 Jeux "Action / Vérité" (7 commandes)</h3>
+                    <ul class="command-list">
+                        <li class="command-item">
+                            <span class="command-name">• jeux action verite</span>
+                            <span class="command-desc">Lance le jeu Action ou Vérité</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• multi</span>
+                            <span class="command-desc">Mode multijoueur</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• ok</span>
+                            <span class="command-desc">Valider une action</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• solo</span>
+                            <span class="command-desc">Mode solo</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• stop</span>
+                            <span class="command-desc">Arrêter le jeu</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• action</span>
+                            <span class="command-desc">Proposer une action</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• verite</span>
+                            <span class="command-desc">Proposer une vérité</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Country Games -->
+                <div id="country" class="command-section">
+                    <h3><i class="fas fa-globe"></i> 🌍 Jeux "Nom de pays" (6 commandes)</h3>
+                    <ul class="command-list">
+                        <li class="command-item">
+                            <span class="command-name">• countries</span>
+                            <span class="command-desc">Liste des pays</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• join</span>
+                            <span class="command-desc">Rejoindre le jeu</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• bye</span>
+                            <span class="command-desc">Quitter</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• rematch</span>
+                            <span class="command-desc">Rejouer</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• mode</span>
+                            <span class="command-desc">Choisir le mode</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• start</span>
+                            <span class="command-desc">Démarrer</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- PvP Duels -->
+                <div id="pvp" class="command-section">
+                    <h3><i class="fas fa-swords"></i> ⚔ Duels PvP (18 commandes)</h3>
+                    <ul class="command-list">
+                        <li class="command-item">
+                            <span class="command-name">• getduels</span>
+                            <span class="command-desc">Liste de tous les duels</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• getmyduels</span>
+                            <span class="command-desc">Mes duels</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• getactiveduels</span>
+                            <span class="command-desc">Duels en cours</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• getmyopponent</span>
+                            <span class="command-desc">Mon adversaire actuel</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• mypave</span>
+                            <span class="command-desc">Mon niveau / progression PvP</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• duel</span>
+                            <span class="command-desc">Lancer un duel</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• mission</span>
+                            <span class="command-desc">Voir/choisir une mission PvP</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• getopponent</span>
+                            <span class="command-desc">Trouver un adversaire</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• stop</span>
+                            <span class="command-desc">Abandonner / arrêter</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• restart</span>
+                            <span class="command-desc">Relancer un duel</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• go</span>
+                            <span class="command-desc">Passer à l'action</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• next</span>
+                            <span class="command-desc">Duel suivant</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• restore</span>
+                            <span class="command-desc">Reprendre un duel en pause</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• duelaction</span>
+                            <span class="command-desc">Action spécifique dans un duel</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• action</span>
+                            <span class="command-desc">Action générale (ex: attaquer, défendre)</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• all</span>
+                            <span class="command-desc">Tout afficher (stats, historiques...)</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• mistats</span>
+                            <span class="command-desc">Mes statistiques PvP</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• win</span>
+                            <span class="command-desc">Signaler une victoire</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Guilds -->
+                <div id="guilds" class="command-section">
+                    <h3><i class="fas fa-landmark"></i> 🏰 Guildes (15 commandes)</h3>
+                    <ul class="command-list">
+                        <li class="command-item">
+                            <span class="command-name">• updateguildinfos</span>
+                            <span class="command-desc">Mettre à jour les infos de la guilde</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• info</span>
+                            <span class="command-desc">Afficher les infos de guilde</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• members</span>
+                            <span class="command-desc">Liste des membres</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• guildroles</span>
+                            <span class="command-desc">Liste des rôles en guilde</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• listguilds</span>
+                            <span class="command-desc">Liste de toutes les guildes</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• createguild</span>
+                            <span class="command-desc">Créer une nouvelle guilde</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• updateguildinfo</span>
+                            <span class="command-desc">Modifier info d'une guilde</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• deleteguild</span>
+                            <span class="command-desc">Supprimer une guilde</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• guildinfo</span>
+                            <span class="command-desc">Détails d'une guilde</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• guildresources</span>
+                            <span class="command-desc">Ressources de la guilde</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• guildmembers</span>
+                            <span class="command-desc">Membres de la guilde</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• assignrole</span>
+                            <span class="command-desc">Assigner un rôle</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• changerole</span>
+                            <span class="command-desc">Changer le rôle d'un membre</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• joinguild</span>
+                            <span class="command-desc">Rejoindre une guilde</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• guildkick</span>
+                            <span class="command-desc">Expulser un membre</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Creator Commands -->
+                <div id="creator" class="command-section">
+                    <h3><i class="fas fa-tools"></i> 🛠 Commandes Créateur du Bot (14 commandes)</h3>
+                    <ul class="command-list">
+                        <li class="command-item">
+                            <span class="command-name">• addgroup</span>
+                            <span class="command-desc">Ajouter un groupe</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• addgroupadmin</span>
+                            <span class="command-desc">Donner les droits admin sur un groupe</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• removegroup</span>
+                            <span class="command-desc">Supprimer un groupe</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• removegroupadmin</span>
+                            <span class="command-desc">Retirer droits admin</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• updategroup</span>
+                            <span class="command-desc">Mettre à jour un groupe</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• groups</span>
+                            <span class="command-desc">Lister les groupes</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• deploy</span>
+                            <span class="command-desc">Déployer le bot</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• startbot</span>
+                            <span class="command-desc">Démarrer le bot</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• stopbot</span>
+                            <span class="command-desc">Arrêter le bot</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• restartbot</span>
+                            <span class="command-desc">Redémarrer</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• updateconfig</span>
+                            <span class="command-desc">Mettre à jour la config</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• showconfig</span>
+                            <span class="command-desc">Afficher la configuration</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• groupinfo</span>
+                            <span class="command-desc">Infos d'un groupe</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• link</span>
+                            <span class="command-desc">Gérer les liens</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Items -->
+                <div id="items" class="command-section">
+                    <h3><i class="fas fa-box-open"></i> 📦 Items (11 commandes)</h3>
+                    <ul class="command-list">
+                        <li class="command-item">
+                            <span class="command-name">• items</span>
+                            <span class="command-desc">Lister tous les items</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• item</span>
+                            <span class="command-desc">Infos sur un item</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• getitem</span>
+                            <span class="command-desc">Obtenir un item</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• buy</span>
+                            <span class="command-desc">Acheter</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• sell</span>
+                            <span class="command-desc">Vendre</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• jeter</span>
+                            <span class="command-desc">Jeter / supprimer</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• use</span>
+                            <span class="command-desc">Utiliser un item</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• additem</span>
+                            <span class="command-desc">Ajouter un item (admin)</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• removeitem</span>
+                            <span class="command-desc">Retirer un item (admin)</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• updateitem</span>
+                            <span class="command-desc">Modifier un item (admin)</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• facture</span>
+                            <span class="command-desc">Voir la facture / historique d'achats</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Jobs -->
+                <div id="jobs" class="command-section">
+                    <h3><i class="fas fa-briefcase"></i> 💼 Jobs (8 commandes)</h3>
+                    <ul class="command-list">
+                        <li class="command-item">
+                            <span class="command-name">• myjob</span>
+                            <span class="command-desc">Voir mon job actuel</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• jobinfo</span>
+                            <span class="command-desc">Infos détaillées sur un job</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• jobstats</span>
+                            <span class="command-desc">Statistiques liées au job</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• paystart</span>
+                            <span class="command-desc">Démarrer paie automatique</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• paystop</span>
+                            <span class="command-desc">Arrêter paie automatique</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• changejob</span>
+                            <span class="command-desc">Changer de job</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• playerjob</span>
+                            <span class="command-desc">Job d'un joueur spécifique</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• deljob</span>
+                            <span class="command-desc">Supprimer un job</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Quiz -->
+                <div id="quiz" class="command-section">
+                    <h3><i class="fas fa-question-circle"></i> ❓ Quiz (14 commandes)</h3>
+                    <ul class="command-list">
+                        <li class="command-item">
+                            <span class="command-name">• qleaderboard</span>
+                            <span class="command-desc">Classement quiz</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• getmyquiz</span>
+                            <span class="command-desc">Mon quiz en cours</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• awards</span>
+                            <span class="command-desc">Récompenses quiz</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• getquizs</span>
+                            <span class="command-desc">Lister tous les quiz</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• addquiz</span>
+                            <span class="command-desc">Ajouter un quiz</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• repquiz</span>
+                            <span class="command-desc">Répondre à un quiz</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• winq</span>
+                            <span class="command-desc">Signaler victoire</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• squizs</span>
+                            <span class="command-desc">Sous-listes de quiz</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• sduel</span>
+                            <span class="command-desc">Quiz duel</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• squiz</span>
+                            <span class="command-desc">Démarrer un quiz</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• nextq</span>
+                            <span class="command-desc">Question suivante</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• cancelq</span>
+                            <span class="command-desc">Annuler quiz</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• stopq</span>
+                            <span class="command-desc">Arrêter quiz</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• joinq</span>
+                            <span class="command-desc">Rejoindre quiz</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- AI -->
+                <div id="ai" class="command-section">
+                    <h3><i class="fas fa-robot"></i> 🤖 AI (2 commandes)</h3>
+                    <ul class="command-list">
+                        <li class="command-item">
+                            <span class="command-name">• boruto</span>
+                            <span class="command-desc">Invocations / features "Boruto" AI</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• Arthur</span>
+                            <span class="command-desc">Invocations / features "Arthur" AI</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- User -->
+                <div id="user" class="command-section">
+                    <h3><i class="fas fa-user"></i> 👤 Utilisateur (35 commandes)</h3>
+                    <ul class="command-list">
+                        <li class="command-item">
+                            <span class="command-name">• stats</span>
+                            <span class="command-desc">Afficher mes stats</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• status</span>
+                            <span class="command-desc">Mon statut actuel</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• create</span>
+                            <span class="command-desc">Créer un profil</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• race</span>
+                            <span class="command-desc">Choisir ma race</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• class</span>
+                            <span class="command-desc">Choisir ma classe</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• buyskillname</span>
+                            <span class="command-desc">Acheter une compétence par nom</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• levelup</span>
+                            <span class="command-desc">Monter de niveau</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• skilllevelup</span>
+                            <span class="command-desc">Améliorer une compétence</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• classlevelup</span>
+                            <span class="command-desc">Améliorer classe</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• pave</span>
+                            <span class="command-desc">Progrès / cheminement</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• terrains</span>
+                            <span class="command-desc">Lister terrains</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• getterain</span>
+                            <span class="command-desc">Obtenir un terrain</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• genpp</span>
+                            <span class="command-desc">Générer avatar / profile pic</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• myskillname</span>
+                            <span class="command-desc">Afficher mes compétences par nom</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• myskills</span>
+                            <span class="command-desc">Lister mes compétences</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• myskill</span>
+                            <span class="command-desc">Détails d'une compétence</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• start</span>
+                            <span class="command-desc">Démarrer (ex: session, défi)</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• getstats</span>
+                            <span class="command-desc">Récupérer mes statistiques</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• getstatus</span>
+                            <span class="command-desc">Récupérer statut</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• pcreate</span>
+                            <span class="command-desc">Créer un personnage</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• changerace</span>
+                            <span class="command-desc">Changer de race</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• chageclass</span>
+                            <span class="command-desc">Changer de classe (typo préservé si voulu)</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• update</span>
+                            <span class="command-desc">Mettre à jour profil</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• updateplayer</span>
+                            <span class="command-desc">Mettre à jour un autre joueur (admin)</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• getpave</span>
+                            <span class="command-desc">Voir mon cheminement</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• addterrain</span>
+                            <span class="command-desc">Ajouter un terrain</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• newskillname</span>
+                            <span class="command-desc">Nommer nouvelle compétence</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• newskill</span>
+                            <span class="command-desc">Ajouter nouvelle compétence</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• deleteskill</span>
+                            <span class="command-desc">Supprimer une compétence</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• pskillname</span>
+                            <span class="command-desc">Infos compétence utilisateur par nom</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• pskill</span>
+                            <span class="command-desc">Infos compétence utilisateur par ID</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• pskills</span>
+                            <span class="command-desc">Lister compétences utilisateur</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• add</span>
+                            <span class="command-desc">Ajouter (contextuel)</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• awakenclass</span>
+                            <span class="command-desc">Éveil de classe</span>
+                        </li>
+                        <li class="command-item">
+                            <span class="command-name">• guildrank</span>
+                            <span class="command-desc">Rang en guilde</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <button class="back-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <i class="fas fa-arrow-up"></i> Retour en haut
+                </button>
             </section>
         </div>
     </main>
@@ -659,10 +1467,10 @@
                 return;
             }
             
-            const whatsappUrl = `https://wa.me/2377699051733?text=Mon%20numéro%20WhatsApp%20exclusif%20est%20${encodeURIComponent(phoneNumber)}`;
+            const whatsappUrl = https://wa.me/2377699051733?text=Mon%20numéro%20WhatsApp%20exclusif%20est%20${encodeURIComponent(phoneNumber)};
             window.open(whatsappUrl, '_blank');
             
-            document.getElementById('qrStatus').textContent = `Accès VIP confirmé pour: ${phoneNumber}`;
+            document.getElementById('qrStatus').textContent = Accès VIP confirmé pour: ${phoneNumber};
             document.getElementById('phoneInput').style.display = 'none';
         }
 
@@ -670,17 +1478,4 @@
         function openTab(evt, tabName) {
             const tabContents = document.getElementsByClassName("tab-content");
             for (let i = 0; i < tabContents.length; i++) {
-                tabContents[i].classList.remove("active");
-            }
-
-            const tabButtons = document.getElementsByClassName("tab-btn");
-            for (let i = 0; i < tabButtons.length; i++) {
-                tabButtons[i].classList.remove("active");
-            }
-
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
-    </script>
-</body>
-</html>
+                tabContents[i].classList.remove("active"
