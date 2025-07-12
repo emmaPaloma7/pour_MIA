@@ -168,7 +168,7 @@
             left: 100%;
         }
         
-        /* QR Section (hidden by default) */
+        /* QR Section */
         .qr-section {
             background: rgba(26, 26, 26, 0.8);
             border-radius: 15px;
@@ -177,7 +177,6 @@
             border: 1px solid var(--gold);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
             max-width: 500px;
-            display: none;
             backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
@@ -674,7 +673,7 @@
                 <button id="connectBtn" class="btn">SE CONNECTER</button>
             </section>
 
-            <!-- QR Section (hidden by default) -->
+            <!-- QR Section (now always visible) -->
             <section class="qr-section" id="qrSection">
                 <h2><i class="fas fa-lock"></i> Connexion Privée</h2>
                 <div class="qr-content">
@@ -716,22 +715,22 @@
                 <h2 class="section-title">🌟 COMMANDES DU BOT 🌟</h2>
                 
                 <div class="section-nav">
-                    <button class="section-btn" onclick="scrollToSection('general')">📋 Général</button>
-                    <button class="section-btn" onclick="scrollToSection('anime')">🎲 Personnage animé</button>
-                    <button class="section-btn" onclick="scrollToSection('truth')">🎲 Action/Vérité</button>
-                    <button class="section-btn" onclick="scrollToSection('country')">🌍 Nom de pays</button>
-                    <button class="section-btn" onclick="scrollToSection('pvp')">⚔ Duels PvP</button>
-                    <button class="section-btn" onclick="scrollToSection('guilds')">🏰 Guildes</button>
-                    <button class="section-btn" onclick="scrollToSection('creator')">🛠 Créateur</button>
-                    <button class="section-btn" onclick="scrollToSection('items')">📦 Items</button>
-                    <button class="section-btn" onclick="scrollToSection('jobs')">💼 Jobs</button>
-                    <button class="section-btn" onclick="scrollToSection('quiz')">❓ Quiz</button>
-                    <button class="section-btn" onclick="scrollToSection('ai')">🤖 AI</button>
-                    <button class="section-btn" onclick="scrollToSection('user')">👤 Utilisateur</button>
+                    <button class="section-btn" onclick="showSection('general')">📋 Général</button>
+                    <button class="section-btn" onclick="showSection('anime')">🎲 Personnage animé</button>
+                    <button class="section-btn" onclick="showSection('truth')">🎲 Action/Vérité</button>
+                    <button class="section-btn" onclick="showSection('country')">🌍 Nom de pays</button>
+                    <button class="section-btn" onclick="showSection('pvp')">⚔ Duels PvP</button>
+                    <button class="section-btn" onclick="showSection('guilds')">🏰 Guildes</button>
+                    <button class="section-btn" onclick="showSection('creator')">🛠 Créateur</button>
+                    <button class="section-btn" onclick="showSection('items')">📦 Items</button>
+                    <button class="section-btn" onclick="showSection('jobs')">💼 Jobs</button>
+                    <button class="section-btn" onclick="showSection('quiz')">❓ Quiz</button>
+                    <button class="section-btn" onclick="showSection('ai')">🤖 AI</button>
+                    <button class="section-btn" onclick="showSection('user')">👤 Utilisateur</button>
                 </div>
                 
                 <!-- General Commands -->
-                <div id="general" class="command-section">
+                <div id="general" class="command-section" style="display: block;">
                     <h3><i class="fas fa-list"></i> 📋 Général (13 commandes)</h3>
                     <ul class="command-list">
                         <li class="command-item">
@@ -790,7 +789,7 @@
                 </div>
                 
                 <!-- Anime Character Games -->
-                <div id="anime" class="command-section">
+                <div id="anime" class="command-section" style="display: none;">
                     <h3><i class="fas fa-gamepad"></i> 🎲 Jeux : Personnage animé (9 commandes)</h3>
                     <ul class="command-list">
                         <li class="command-item">
@@ -833,7 +832,7 @@
                 </div>
                 
                 <!-- Truth or Dare Games -->
-                <div id="truth" class="command-section">
+                <div id="truth" class="command-section" style="display: none;">
                     <h3><i class="fas fa-dice"></i> 🎲 Jeux "Action / Vérité" (7 commandes)</h3>
                     <ul class="command-list">
                         <li class="command-item">
@@ -868,7 +867,7 @@
                 </div>
                 
                 <!-- Country Games -->
-                <div id="country" class="command-section">
+                <div id="country" class="command-section" style="display: none;">
                     <h3><i class="fas fa-globe"></i> 🌍 Jeux "Nom de pays" (6 commandes)</h3>
                     <ul class="command-list">
                         <li class="command-item">
@@ -899,7 +898,7 @@
                 </div>
                 
                 <!-- PvP Duels -->
-                <div id="pvp" class="command-section">
+                <div id="pvp" class="command-section" style="display: none;">
                     <h3><i class="fas fa-swords"></i> ⚔ Duels PvP (18 commandes)</h3>
                     <ul class="command-list">
                         <li class="command-item">
@@ -978,7 +977,7 @@
                 </div>
                 
                 <!-- Guilds -->
-                <div id="guilds" class="command-section">
+                <div id="guilds" class="command-section" style="display: none;">
                     <h3><i class="fas fa-landmark"></i> 🏰 Guildes (15 commandes)</h3>
                     <ul class="command-list">
                         <li class="command-item">
@@ -1045,7 +1044,7 @@
                 </div>
                 
                 <!-- Creator Commands -->
-                <div id="creator" class="command-section">
+                <div id="creator" class="command-section" style="display: none;">
                     <h3><i class="fas fa-tools"></i> 🛠 Commandes Créateur du Bot (14 commandes)</h3>
                     <ul class="command-list">
                         <li class="command-item">
@@ -1108,7 +1107,7 @@
                 </div>
                 
                 <!-- Items -->
-                <div id="items" class="command-section">
+                <div id="items" class="command-section" style="display: none;">
                     <h3><i class="fas fa-box-open"></i> 📦 Items (11 commandes)</h3>
                     <ul class="command-list">
                         <li class="command-item">
@@ -1159,7 +1158,7 @@
                 </div>
                 
                 <!-- Jobs -->
-                <div id="jobs" class="command-section">
+                <div id="jobs" class="command-section" style="display: none;">
                     <h3><i class="fas fa-briefcase"></i> 💼 Jobs (8 commandes)</h3>
                     <ul class="command-list">
                         <li class="command-item">
@@ -1198,7 +1197,7 @@
                 </div>
                 
                 <!-- Quiz -->
-                <div id="quiz" class="command-section">
+                <div id="quiz" class="command-section" style="display: none;">
                     <h3><i class="fas fa-question-circle"></i> ❓ Quiz (14 commandes)</h3>
                     <ul class="command-list">
                         <li class="command-item">
@@ -1261,7 +1260,7 @@
                 </div>
                 
                 <!-- AI -->
-                <div id="ai" class="command-section">
+                <div id="ai" class="command-section" style="display: none;">
                     <h3><i class="fas fa-robot"></i> 🤖 AI (2 commandes)</h3>
                     <ul class="command-list">
                         <li class="command-item">
@@ -1276,7 +1275,7 @@
                 </div>
                 
                 <!-- User -->
-                <div id="user" class="command-section">
+                <div id="user" class="command-section" style="display: none;">
                     <h3><i class="fas fa-user"></i> 👤 Utilisateur (35 commandes)</h3>
                     <ul class="command-list">
                         <li class="command-item">
@@ -1443,17 +1442,6 @@
     </footer>
 
     <script>
-        // Toggle QR section
-        document.getElementById('connectBtn').addEventListener('click', function() {
-            const qrSection = document.getElementById('qrSection');
-            if (qrSection.style.display === 'block') {
-                qrSection.style.display = 'none';
-            } else {
-                qrSection.style.display = 'block';
-                qrSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-
         // Show phone input
         function showPhoneInput() {
             document.getElementById('phoneInput').style.display = 'block';
@@ -1467,15 +1455,35 @@
                 return;
             }
             
-            const whatsappUrl = https://wa.me/2377699051733?text=Mon%20numéro%20WhatsApp%20exclusif%20est%20${encodeURIComponent(phoneNumber)};
+            const whatsappUrl = `https://wa.me/2377699051733?text=Mon%20numéro%20WhatsApp%20exclusif%20est%20${encodeURIComponent(phoneNumber)}`;
             window.open(whatsappUrl, '_blank');
             
-            document.getElementById('qrStatus').textContent = Accès VIP confirmé pour: ${phoneNumber};
+            document.getElementById('qrStatus').textContent = `Accès VIP confirmé pour: ${phoneNumber}`;
             document.getElementById('phoneInput').style.display = 'none';
         }
 
-        // Tab system
-        function openTab(evt, tabName) {
-            const tabContents = document.getElementsByClassName("tab-content");
-            for (let i = 0; i < tabContents.length; i++) {
-                tabContents[i].classList.remove("active"
+        // Show specific section
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.command-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).style.display = 'block';
+            
+            // Scroll to section
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Scroll to section (alternative function)
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
